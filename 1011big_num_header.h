@@ -370,7 +370,7 @@ int Compare_AB(bigint** A, bigint** B)
     if(sign_a == 0)
         return ret;
     else
-        return ret ^ 1;
+        return ret * (-1);
 }
 
 /* 2.10 Left / Right Shift */
