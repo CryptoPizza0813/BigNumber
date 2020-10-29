@@ -15,7 +15,7 @@ typedef unsigned long long word;
 #define NON_NEGATIVE 0
 #define NEGATIVE 1
 
-
+#define word_modulo 2 << WORD_BITLEN -1
 
 /* Dynamic Memory Allocation */
 typedef struct{
@@ -35,6 +35,17 @@ typedef struct{
     word a[MAX_WORD_LEN];        // address for big integer
 } bigint;
 */
+
+#define ZERORIZE 0
+void array_init(word* a, int wordlen)
+{
+   for (int i = 0; i < wordlen; i++)
+   {
+      a[i] = 0x00;
+   }
+}
+
+
 
 /* 2.1 Create BigInt, Delete BigInt, Zeroize BigInt */
 void bi_delete(bigint** x)
@@ -60,15 +71,6 @@ void bi_new(bigint** x, int wordlen)
     (*x)->sign = NON_NEGATIVE;
     (*x)->wordlen = wordlen;
     (*x)->a = (word*)calloc(wordlen, sizeof(word));
-}
-
-
-void zeroize(bigint** x)
-{
-    for(int i = 0; i < (*x)->wordlen; i++)
-    {
-        (*x)->a[i] = 0x00;
-    }
 }
 
 /* 2.2 Set BigInt, Show BigInt */
@@ -124,8 +126,6 @@ void bi_set_by_string(bigint** x, int sign, char* a, word base)   // bigint x <-
 }
 */
 
-
-
 // Show big int
 void bi_show(bigint*x , word base)
 {
@@ -170,7 +170,7 @@ void bi_refine(bigint* x)
     int new_wordlen = x->wordlen;
     while(new_wordlen > 1)  //  at least one word needed
     {
-        if(x-> a[new_wordlen - 1] != 0)
+        if(x->a[new_wordlen - 1] != 0)
             break;
         new_wordlen--;
     }

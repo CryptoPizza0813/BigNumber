@@ -3,7 +3,7 @@
  * Developed by JangHyuck Choi & JaeHui In 
  * 2020-10-11
  * */
-#include "1029big_num_header.h"
+#include "1011big_num_header.h"
 
 /**
  * NEED TO IMPLEMENT
@@ -21,10 +21,14 @@
 int main()
 {
     word arr[3] = {0x1234, 0x5678, 0x9abc};
-    bigint teemo;
+    bigint *teemo = NULL;
+    bi_new(&teemo, 3);
+
+    /*
     bigint *teemo_p = &teemo;
     teemo.sign = NON_NEGATIVE;
     teemo.wordlen = 3;
+    */
 
     /*
     더블 포인터 구조체 참고
