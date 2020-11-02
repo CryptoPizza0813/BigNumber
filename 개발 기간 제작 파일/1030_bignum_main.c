@@ -3,7 +3,7 @@
  * Developed by JangHyuck Choi & JaeHui In 
  * 2020-10-30
  * */
-#include "bignum_add_sub_header.h"
+#include "bignum_basic_header.h"
 
 /**
  * NEED TO IMPLEMENT
