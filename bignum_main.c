@@ -8,7 +8,6 @@
 
 int main()
 {
-	word arr[3] = { 0x1234, 0x5678, 0x9abc };
 	bigint* teemo = NULL;
 
 	printf("create big int\n");
@@ -122,20 +121,41 @@ int main()
 	bi_show(teemo3, 16);
 	printf("\n");
 	
-	/*
-	printf("big int add\nA: ");
-	bi_show(teemo2, 16);
-	printf("big int add\nB: ");
-	bi_show(teemo3, 16);
-	bi_add(teemo2, teemo3, &teemo4);	
+	
+
+	word arr1[2] = {0x11111111, 0x22222222};
+	word arr2[2] = {0x10000000, 0x11111111};
+	bigint* add_teemo1 = NULL;
+	bigint* add_teemo2 = NULL;
+	bigint* add_teemo3 = NULL;
+	bigint* sub_teemo1 = NULL;
+	bigint* sub_teemo2 = NULL;
+	bigint* sub_teemo3 = NULL;
+	bi_new(&add_teemo1, 2);
+	bi_new(&add_teemo2, 2);
+	bi_new(&sub_teemo1, 2);
+	bi_new(&sub_teemo2, 2);
+	bi_set_by_array(&add_teemo1, add_teemo1->sign, arr1, add_teemo1->wordlen);
+	bi_set_by_array(&add_teemo2, add_teemo2->sign, arr2, add_teemo2->wordlen);
+	bi_set_by_array(&sub_teemo1, sub_teemo1->sign, arr1, sub_teemo1->wordlen);
+	bi_set_by_array(&sub_teemo2, sub_teemo2->sign, arr2, sub_teemo2->wordlen);	
+	
+	printf("big int add\nA: ");	
+	bi_show(add_teemo1, 16);
+	printf("B: ");
+	bi_show(add_teemo2, 16);
+	bi_add(add_teemo1, add_teemo2, &add_teemo3);	
 	printf("A + B = ");
-	bi_set_one(&teemo3);
-	bi_show(teemo3, 16);
-	bi_sub(&teemo3, &teemo3, &teemo4);
-	bi_show(teemo4, 16);
-	*/
+	bi_show(add_teemo3, 16);
+	printf("\n");
 
-
+	printf("big int sub\nC: ");	
+	bi_show(sub_teemo1, 16);
+	printf("D: ");
+	bi_show(sub_teemo2, 16);
+	bi_sub(sub_teemo1, sub_teemo2, &sub_teemo3);	
+	printf("A - B = ");
+	bi_show(sub_teemo3, 16);
 
 	return 0;
 }
