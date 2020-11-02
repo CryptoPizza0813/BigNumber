@@ -1,22 +1,10 @@
 /**
  * Big Number Library
  * Developed by JangHyuck Choi & JaeHui In 
- * 2020-10-30
+ * 2020-11-02
  * */
-#include "bignum_add_sub_header.h"
 
-/**
- * NEED TO IMPLEMENT
- * 2진수 bi_show 오류 수정 필요
- * WORD_BITLEN 선택 구현 필요
- * 10진수 bi_show 구현 필요     --> ADD, MUL 구현 이후 작성할 예정.
- * bi_gen_rand 함수 오류 수정 필요
- * j-th bit 와 bit len 출력값 검증 필요
- * bi_delete의 free((*x)->a); 부분에서 코드가 죽어버림. bi_delete를 쓰는 함수들은 주석처리함.
- * bi_rand, bi_show(10진수), LeftShift, RightShift, Reduction 은 주석처리됨.
-
-*/
-
+#include "bignum_add_sub.c"
 
 int main()
 {
@@ -116,20 +104,38 @@ int main()
 	printf("after shift 4 bit: ");
 	Left_Shift(&teemo4, 4);
 	bi_show(teemo4, 16);
+	printf("\n");
 
 	printf("right shift\nbefore right shift: ");
 	bi_show(teemo4, 16);
 	printf("after shift 4 bit: ");
 	Right_Shift(&teemo4, 4);
 	bi_show(teemo4, 16);
+	printf("\n");
 
 
 	printf("big int reduction\nbefore reduction: ");
-	Left_Shift(&teemo4, 4);
-	bi_show(teemo4, 16);
+	Left_Shift(&teemo3, 4);
+	bi_show(teemo3, 16);
 	printf("after reduction by 2^4: ");
-	Reduction(&teemo4, 4);
+	Reduction(&teemo3, 15);
+	bi_show(teemo3, 16);
+	printf("\n");
+	
+	/*
+	printf("big int add\nA: ");
+	bi_show(teemo2, 16);
+	printf("big int add\nB: ");
+	bi_show(teemo3, 16);
+	bi_add(teemo2, teemo3, &teemo4);	
+	printf("A + B = ");
+	bi_set_one(&teemo3);
+	bi_show(teemo3, 16);
+	bi_sub(&teemo3, &teemo3, &teemo4);
 	bi_show(teemo4, 16);
+	*/
+
+
 
 	return 0;
 }

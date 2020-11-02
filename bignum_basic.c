@@ -1,42 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "bignum_basic.h"
 
-#define WORD_BITLEN 32
-
-#if WORD_BITLEN == 8
-typedef unsigned char word;
-#elif WORD_BITLEN == 32
-typedef unsigned int word;
-#elif WORD_BITLEN == 64
-typedef unsigned long long word;
-#endif 
-
-#define NON_NEGATIVE 0
-#define NEGATIVE 1
-
-#define word_modulo 2 << WORD_BITLEN -1
-
-/* Dynamic Memory Allocation */
-typedef struct {
-
-	int sign;       // NEGATIVE or NON-NEGATIVE
-	int wordlen;    // wordlen >= 0
-	word* a;        // address for big integer
-} bigint;
-
-
-/*
-// Static Memory Allocation
-typedef struct{
-
-	int sign;       // NEGATIVE or NON-NEGATIVE
-	int wordlen;    // wordlen >= 0
-	word a[MAX_WORD_LEN];        // address for big integer
-} bigint;
-*/
-
-#define ZERORIZE 0
 void array_init(word * a, int wordlen)
 {
 	for (int i = 0; i < wordlen; i++)
@@ -44,6 +7,7 @@ void array_init(word * a, int wordlen)
 		a[i] = 0x00;
 	}
 }
+
 /* 2.1 Create BigInt, Delete BigInt, Zeroize BigInt */
 void bi_delete(bigint** x)
 {
@@ -182,6 +146,7 @@ void bi_refine(bigint* x)
 		x->sign = NON_NEGATIVE;
 
 }
+
 /* 2.4 Assign BigInt */
 void array_copy(word y[], word x[], int wordlen)    // 수정 필요
 {
@@ -466,7 +431,7 @@ void Reduction(bigint** A, int r)
 
 			word a = 0x01;
 			a = a << R;        // 2^R 구현
-			(*A)->a[Q] = (*A)->a[Q] ^ (a - 1);
+			(*A)->a[Q] = (*A)->a[Q] & (a - 1);
 		}
 
 		bi_refine(*A);
