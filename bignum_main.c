@@ -101,15 +101,15 @@ int main()
 	printf("left shift\nbefore left shift: ");
 	bi_show(teemo4, 16);
 	printf("after shift 4 bit: ");
-	Left_Shift(&teemo4, 4);
+	Left_Shift(&teemo4, 24);
 	bi_show(teemo4, 16);
 	printf("\n");
 
 	printf("right shift\nbefore right shift: ");
-	bi_show(teemo4, 16);
+	bi_show(teemo3, 16);
 	printf("after shift 4 bit: ");
-	Right_Shift(&teemo4, 4);
-	bi_show(teemo4, 16);
+	Right_Shift(&teemo3, 24);
+	bi_show(teemo3, 16);
 	printf("\n");
 
 
