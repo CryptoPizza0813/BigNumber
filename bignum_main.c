@@ -4,7 +4,7 @@
  * 2020-11-02
  * */
 
-#include "bignum_add_sub.c"
+#include "bignum_mul.c"
 
 int main()
 {
@@ -101,7 +101,7 @@ int main()
 	printf("left shift\nbefore left shift: ");
 	bi_show(teemo4, 16);
 	printf("after shift 4 bit: ");
-	Left_Shift(&teemo4, 24);
+	Left_Shift(&teemo4, 23);
 	bi_show(teemo4, 16);
 	printf("\n");
 
@@ -156,6 +156,21 @@ int main()
 	bi_sub(sub_teemo1, sub_teemo2, &sub_teemo3);	
 	printf("A - B = ");
 	bi_show(sub_teemo3, 16);
+
+	bigint* SP_mul_teemo = NULL;
+	bi_mulc(arr[0], arr[1], &SP_mul_teemo);
+	printf("x = %lu \ny = %lu \n", arr[0], arr[1]);
+	printf("mul(x,y) : ");
+	bi_show(SP_mul_teemo, 16);
+
+	bigint* mul_teemo = NULL;
+	bi_mul(teemo, teemo3, &mul_teemo);
+	printf("x = ");
+	bi_show(teemo, 16);
+	printf("\ny = ");
+	bi_show(teemo3, 16);
+	printf("\nx*y =");
+	bi_show(mul_teemo, 16);
 
 	return 0;
 }
