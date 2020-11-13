@@ -190,10 +190,26 @@ int main()
 	printf("y = 0x");
 	bi_show(teemo3, 16);
 	printf("\n");
-	bi_mul(teemo, teemo3, &mul_teemo);
 	printf("print(x*y == 0x");
 	bi_show(mul_teemo, 16);
 	printf(")\n\n");
+
+	printf("#big int mul(multi pricision, Karatsuba)\n");
+	bigint* mul_K_teemo = NULL;
+	bi_kmul(teemo, teemo3, &mul_K_teemo);
+	printf("x = 0x");
+	bi_show(teemo, 16);
+	printf("\n");
+	printf("y = 0x");
+	bi_show(teemo3, 16);
+	printf("\n");
+	printf("print(x*y == 0x");
+	bi_show(mul_K_teemo, 16);
+	printf(")\n\n");
+
+
+	
+
 
 	return 0;
 }

@@ -58,4 +58,76 @@ void bi_mul(bigint* x, bigint* y, bigint** C)
    else
       (*C)->sign = NEGATIVE;
    bi_delete(&C_word);
+
 }
+
+void bi_kmul(bigint* x, bigint* y, bigint** C)
+{
+   int flag = 1;
+   if(flag >= x->wordlen || flag >= y->wordlen)
+   {  
+      bi_mul(x, y, C);
+      return;
+   }
+
+
+   int l;
+   if(x->wordlen > y->wordlen)
+      l = (x->wordlen + 1) >> 1;
+   else
+      l = (y->wordlen + 1) >> 1;
+
+   bigint* A0 = NULL;
+   bigint* A1 = NULL;
+   bigint* B0 = NULL;
+   bigint* B1 = NULL;
+   // bi_new(&A0, l); bi_new(&A1, l); bi_new(&B0, l); bi_new(&B1, l);
+   bi_assign(&A0, x);
+   bi_assign(&A1, x);
+   bi_assign(&B0, y);
+   bi_assign(&B1, y);
+
+   Left_Shift(&A1, WORD_BITLEN * l);
+   Reduction(&A0, WORD_BITLEN * l);
+   Left_Shift(&B1, WORD_BITLEN * l);
+   Reduction(&B0, WORD_BITLEN * l);
+
+   bigint* T1 = NULL;
+   bigint* T0 = NULL;   
+   bi_new(&T1, 2 * l);
+   bi_new(&T0, 2 * l);
+   bi_kmul(A1, B1, &T1);
+   bi_kmul(A1, B1, &T0);
+
+   bigint* R = NULL;
+   bi_new(&R, 4 * l);
+   Left_Shift(&T1, 2 * l * WORD_BITLEN);
+   bi_add(T1, T0, &R);
+
+   bigint* S1 = NULL;
+   bigint* S0 = NULL;   
+   bi_new(&S1, 2 * l);
+   bi_new(&S0, 2 * l);
+   bi_sub(A0, A1, &S1);
+   bi_sub(B1, B0, &S0);
+
+   bigint* S = NULL;  
+   bi_new(&S, 2 * l);   
+   int sign = S1->sign ^ S0->sign;
+   if(S1->sign == NEGATIVE)
+      bi_flip_sign(&S1);
+   if(S0->sign == NEGATIVE)
+      bi_flip_sign(&S1);
+   bi_kmul(S1, S0, &S);
+   S->sign = sign;      // 이게 맞는 표현??
+
+   bi_add(S, T1, &S);
+   bi_add(S, T0, &S);
+   Left_Shift(&S, WORD_BITLEN * l);
+
+   bi_add(R, S, &R);
+
+   bi_assign(C, R);  // 맞는 표현?
+
+   // pesudo code 같이 구현은 완료....
+} 
