@@ -108,7 +108,7 @@ void bi_show(bigint* x, word base)
          }
          printf("\t");
 
-      } printf("\n");
+      }
 
    }
    else if (base == 10)

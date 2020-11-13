@@ -74,7 +74,7 @@ void bi_mul(bigint* x, bigint* y, bigint** C)
 
 void bi_kmul(bigint* x, bigint* y, bigint** C)
 {
-	int flag = 1;
+	int flag = 2;
 	if (flag >= x->wordlen || flag >= y->wordlen)
 	{
 		bi_mul(x, y, C);
@@ -107,7 +107,7 @@ void bi_kmul(bigint* x, bigint* y, bigint** C)
 	bi_new(&T1, 2 * l);
 	bi_new(&T0, 2 * l);
 	bi_kmul(A1, B1, &T1);
-	bi_kmul(A1, B1, &T0);
+	bi_kmul(A0, B0, &T0);	
 
 	bigint* R = NULL;
 	bi_new(&R, 4 * l);
