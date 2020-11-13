@@ -122,19 +122,16 @@ void bi_show(bigint* x, word base)
       {
          for (int i = x->wordlen - 1; i >= 0; i--)
             printf("%02x", x->a[i]);
-         printf("\n");
       }
       else if (WORD_BITLEN == 32)
       {
          for (int i = x->wordlen - 1; i >= 0; i--)
             printf("%08x", x->a[i]);
-         printf("\n");
       }
       else if(WORD_BITLEN == 64)
       {
          for (int i = x->wordlen - 1; i >= 0; i--)
             printf("%16x", x->a[i]);
-         printf("\n");
       }
    }
 
