@@ -175,7 +175,6 @@ int main()
 	printf("#big int mul(single pricision)\n");
 	bigint* SP_mul_teemo = NULL;
 	bi_mulc(arr[0], arr[1], &SP_mul_teemo);
-	printf("x = %lu \ny = %lu \n", arr[0], arr[1]);
 	printf("print(x*y == 0x");
 	bi_show(SP_mul_teemo, 16);
 	printf(")\n\n");
@@ -190,6 +189,7 @@ int main()
 	printf("y = 0x");
 	bi_show(teemo3, 16);
 	printf("\n");
+	bi_mul(teemo, teemo3, &mul_teemo);
 	printf("print(x*y == 0x");
 	bi_show(mul_teemo, 16);
 	printf(")\n\n");
@@ -207,9 +207,20 @@ int main()
 	bi_show(mul_K_teemo, 16);
 	printf(")\n\n");
 
-
-	
-
+	bi_delete(&teemo);
+	bi_delete(&teemo2);
+	bi_delete(&teemo3);
+	bi_delete(&teemo4);
+	bi_delete(&teemo5);
+	bi_delete(&add_teemo1);
+	bi_delete(&add_teemo2);
+	bi_delete(&add_teemo3);
+	bi_delete(&sub_teemo1);
+	bi_delete(&sub_teemo2);
+	bi_delete(&sub_teemo3);
+	bi_delete(&SP_mul_teemo);
+	bi_delete(&mul_teemo);
+	bi_delete(&mul_K_teemo);
 
 	return 0;
 }
