@@ -176,14 +176,14 @@ int main()
 		
 		while(1)
 		{
-			r = rand() % 6;
+			r = rand() % 10;
 			s = rand() % 2;
-			if(r >= 5)
+			if(r >= 9)
 				break;
 		}
 		
 		random[i] = r;
-		sign[i] = 0;
+		sign[i] = s;
 	}
 	bi_gen_rand(&r0, sign[0], random[0]);
 	bi_gen_rand(&r1, sign[1], random[1]);
@@ -312,29 +312,109 @@ int main()
 
 
 	printf("print(\"multi pricison Karatsuba mul test\")\n");
-	bi_kmul(r7, r8, &t8);
-	printf("x = 0x");
-	bi_show(r7, 16);
-	printf("\n");
-	printf("y = 0x");
-	bi_show(r8, 16);
-	printf("\n");
-	printf("print(x * y == 0x");
-	bi_show(t8, 16);
-	printf(")\n\n");
-
-	
-	bi_kmul(r8, r9, &t9);
+	printf("# before go in!! r8, r9 SIGN == %d %d\n", r8->sign, r9->sign);
 	printf("x = 0x");
 	bi_show(r8, 16);
 	printf("\n");
 	printf("y = 0x");
 	bi_show(r9, 16);
 	printf("\n");
+	bi_kmulc(r8, r9, &t8);
+	printf("print(x * y == 0x");
+	bi_show(t8, 16);
+	printf(")\n\n");
+
+	
+	printf("# before go in!! r8, r9 SIGN == %d %d\n", r8->sign, r9->sign);
+	printf("x = 0x");
+	bi_show(r8, 16);
+	printf("\n");
+	printf("y = 0x");
+	bi_show(r9, 16);
+	printf("\n");
+	bi_kmulc(r8, r9, &t9);
 	printf("print(x * y == 0x");
 	bi_show(t9, 16);
 	printf(")\n\n");
 
+	/*
+		Karatsuba finial test
+		test for 15 case
+	*/
+	int cnt = 1;
+	printf("\n\n# Karatsuba final test\n");
+	printf("print(\"Karatsuba final test\")");
+	while(cnt < 100) {
+		printf("\n# TEST %d\n", cnt);
+		int random2[2] = {0, };
+		int sign2[2] = {0, };
+		for(int i = 0; i < 2; i++) {
+			int r = 10;
+			int s = 0;
+		
+			while(1)
+			{
+				r = rand() % 14;
+				s = rand() % 2;
+				if (r >= 9)
+					break;
+			}
+			random2[i] = r;
+			sign2[i] = s;
+		}
+		bigint* K_TEST = NULL;
+		bigint* a = NULL;
+		bigint* b = NULL;
+		bi_gen_rand(&a, sign2[0], random2[0]);
+		bi_gen_rand(&b, sign2[1], random2[1]);
+
+		if(a->sign == NON_NEGATIVE){
+			printf("x = 0x");
+			bi_show(a, 16);
+			printf("\n");
+		}
+		else {
+			bi_flip_sign(&a);
+			printf("x = -0x");
+			bi_show(a, 16);
+			printf("\n");
+			bi_flip_sign(&a);
+		}
+		if(b->sign == NON_NEGATIVE){
+			printf("y = 0x");
+			bi_show(b, 16);
+			printf("\n");
+		}
+		else {
+			bi_flip_sign(&b);
+			printf("y = -0x");
+			bi_show(b, 16);
+			printf("\n");
+			bi_flip_sign(&b);
+		}	
+		// printf("print(\"x = \", hex(x), \"\\ny = \", hex(y))\n");
+		bi_kmulc(a,b, &K_TEST);
+		if(K_TEST->sign == NON_NEGATIVE) {
+			printf("z = 0x");
+			bi_show(K_TEST, 16);
+			printf("\n");
+		}
+		else{
+			bi_flip_sign(&K_TEST);
+			printf("z = -0x");
+			bi_show(K_TEST, 16);
+			printf("\n");
+			bi_flip_sign(&K_TEST);
+		}
+		// printf("print(\"z = \", hex(z))\n");
+		printf("print(x * y == z)\n\n\n");	
+
+		bi_delete(&a);
+		bi_delete(&b);
+		bi_delete(&K_TEST);	
+
+		cnt += 1;
+	}
 
 
 

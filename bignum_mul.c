@@ -73,12 +73,14 @@ void bi_mul(bigint* x, bigint* y, bigint** C)
 
 void bi_kmul(bigint* x, bigint* y, bigint** C)
 {
+	// printf("test\n");
 	int flag = 4;
 	if (flag >= x->wordlen || flag >= y->wordlen)
 	{
 		bi_mul(x, y, C);
 		return;
 	}
+	// printf("test\n");
 
 	int l;
 	if(x->wordlen > y->wordlen)
@@ -145,15 +147,12 @@ void bi_kmul(bigint* x, bigint* y, bigint** C)
 	bigint* Copy_SS = NULL;	
 	bi_assign(&Copy_S, S);
 	bi_add(Copy_S, T1, &S);
-	printf("%d %d\n", Copy_S->sign, T1->sign);
-	printf("print(0x");bi_show(Copy_S, 16); printf(" + 0x"); bi_show(T1, 16); printf(" == 0x"); bi_show(S, 16); printf(")\n");
 	bi_assign(&Copy_SS, S);
 	bi_add(Copy_SS, T0, &S);
 	// printf("print(0x");bi_show(Copy_SS, 16); printf(" + 0x"); bi_show(T0, 16); printf(" == 0x"); bi_show(S, 16); printf(")\n");
 	//printf("print("); bi_show(S,16); printf(" << %d == ", lw);
 	Left_Shift(&S, lw);
 	//bi_show(S, 16); printf(")\n");
-	
 
 	bigint* Copy_R = NULL;
 	bi_assign(&Copy_R, R);
@@ -175,4 +174,31 @@ void bi_kmul(bigint* x, bigint* y, bigint** C)
 	bi_delete(&Copy_SS);
 	bi_delete(&Copy_R);
 	// pesudo code 같이 구현은 완료....
+}
+
+void bi_kmulc(bigint* x, bigint* y, bigint** C)
+{
+	int sign = 0;
+	bigint* TEMP = NULL;
+
+	if(x->sign != y->sign)
+		sign = NEGATIVE;
+	else
+		sign = NON_NEGATIVE;
+	
+
+	x->sign = NON_NEGATIVE;
+	y->sign = NON_NEGATIVE;
+	bi_kmul(x, y, &TEMP);
+
+	bi_assign(C, TEMP);
+	if(sign == NEGATIVE)
+		if((*C)->sign == NON_NEGATIVE)
+			bi_flip_sign(C);
+	else
+		if((*C)->sign == NEGATIVE)
+			bi_flip_sign(C);
+	
+
+	bi_delete(&TEMP);
 }

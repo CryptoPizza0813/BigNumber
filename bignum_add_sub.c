@@ -6,16 +6,14 @@ void bi_add(bigint* x, bigint* y, bigint** C)
 {
 	if(x->sign != NEGATIVE && y->sign == NEGATIVE) {
 		y->sign = NON_NEGATIVE;
-		bi_subc(x, y, C);
+		bi_sub(x, y, C);
 		return;
 	}
 	else if(x->sign == NEGATIVE && y->sign != NEGATIVE) {
 		x->sign = NON_NEGATIVE;
-		bi_subc(y, x, C);
+		bi_sub(y, x, C);
 		return;
 	}
-
-
 
 	int min_len;
 	int max_len;
@@ -88,7 +86,6 @@ void bi_add(bigint* x, bigint* y, bigint** C)
 	else if(x->sign == NEGATIVE && y->sign == NEGATIVE)
 		(*C)->sign = NEGATIVE;
 }
-
 
 // bigint 뺄셈
 void bi_subc(bigint* x, bigint* y, bigint** C)  // x >= y > 0 에서 x - y
