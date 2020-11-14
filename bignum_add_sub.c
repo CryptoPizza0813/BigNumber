@@ -3,7 +3,20 @@
 
 // bigint 덧셈
 void bi_add(bigint* x, bigint* y, bigint** C)
-{;
+{
+	if(x->sign != NEGATIVE && y->sign == NEGATIVE) {
+		y->sign = NON_NEGATIVE;
+		bi_subc(x, y, C);
+		return;
+	}
+	else if(x->sign == NEGATIVE && y->sign != NEGATIVE) {
+		x->sign = NON_NEGATIVE;
+		bi_subc(y, x, C);
+		return;
+	}
+
+
+
 	int min_len;
 	int max_len;
 	int flag;
@@ -92,11 +105,17 @@ void bi_subc(bigint* x, bigint* y, bigint** C)  // x >= y > 0 에서 x - y
 	}
 	for (int i = y->wordlen; i < x->wordlen; i++)
 	{
-		(*C)->a[i] = (x->a[i]);
+		(*C)->a[i] = (x->a[i] - b);
+		if (x->a[i] < b)
+			b = 1;
+		else
+			b = 0;
 	}
 }
+
 void bi_sub(bigint* x, bigint* y, bigint** C)
 {
+	bigint* Copy_C = NULL;
 	int max_len;
 	if (x->wordlen > y->wordlen) {
 		max_len = x->wordlen;
@@ -107,61 +126,69 @@ void bi_sub(bigint* x, bigint* y, bigint** C)
 	else {
 		max_len = x->wordlen;
 	}
-	bi_new(C, max_len);
+
+	bi_new(&Copy_C, max_len);
 
 	if (is_zero(x) == 0)
 	{
-		bi_assign(C, y);
-		bi_flip_sign(C);    // -Y를 리턴
+		bi_assign(&Copy_C, y);
+		bi_flip_sign(&Copy_C);    // -Y를 리턴
 	}
 	else if (is_zero(y) == 0)
 	{
-		bi_assign(C, x);    // X를 리턴
+		bi_assign(&Copy_C, x);    // X를 리턴
 	}
 
 	if (x->sign == 0 && y->sign == 0)    // x, y 둘다 양수
 	{
 		if (Compare_ABS(x, y) == 1)  // x > y > 0
 		{
-			bi_subc(x, y, C);
+			bi_subc(x, y, &Copy_C);
 		}
 		else if (Compare_ABS(x, y) == 0) // x == y > 0
 		{
-			bi_set_zero(C);
+			bi_set_zero(&Copy_C);
 		}
 		else if (Compare_ABS(x, y) == -1)    // y > x > 0
 		{
-			bi_subc(y, x, C);
-			bi_flip_sign(C);
+			bi_subc(y, x, &Copy_C);
+			bi_flip_sign(&Copy_C);
 		}
 	}
 	else if (x->sign != y->sign) // 둘 중 한개만 양수
 	{
 		if (x->sign == 0) // x > 0, y < 0
 		{
-			bi_add(x, y, C);    // add에서 sign을 사용하지 않는다.
+			bi_add(x, y, &Copy_C);    // add에서 sign을 사용하지 않는다.
 		}
 		else    // x < 0, y > 0
 		{
-			bi_add(x, y, C);
-			bi_flip_sign(C);
+			bi_add(x, y, &Copy_C);
+			bi_flip_sign(&Copy_C);
 		}
 	}
 	else if (x->sign == -1 && y->sign == -1)
 	{
 		if (Compare_ABS(x, y) == 1)      // * 안넣는게 맞나? ㅠ
 		{
-			bi_subc(x, y, C);
-			bi_flip_sign(C);
+			bi_subc(x, y, &Copy_C);
+			bi_flip_sign(&Copy_C);
 		}
 		else if (Compare_ABS(x, y) == 0)
 		{
-			bi_set_zero(C);
+			bi_set_zero(&Copy_C);
 		}
 		else if (Compare_ABS(x, y) == -1)
 		{
-			bi_subc(x, y, C);
+			bi_subc(x, y, &Copy_C);
 		}
 	}
 
+	bi_refine(Copy_C);
+	bi_assign(C, Copy_C);
+
+	bi_delete(&Copy_C);
+	
+	if(x->sign == NEGATIVE && y->sign == NEGATIVE)
+		(*C)->sign = NEGATIVE;
 }

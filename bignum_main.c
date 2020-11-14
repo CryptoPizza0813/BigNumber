@@ -1,9 +1,8 @@
 /**
  * Big Number Library
- * Developed by JangHyuck Choi & JaeHui In 
+ * Developed by JangHyuck Choi & JaeHui In
  * 2020-11-13
  * */
-
 #include "bignum_mul.c"
 
 int main()
@@ -177,7 +176,7 @@ int main()
 		
 		while(1)
 		{
-			r = rand() % 7;
+			r = rand() % 6;
 			s = rand() % 2;
 			if(r >= 5)
 				break;
@@ -310,8 +309,10 @@ int main()
 	printf(")\n\n");
 
 	printf("# multi pricision test (Kartusba)\n");
+
+
 	printf("print(\"multi pricison Karatsuba mul test\")\n");
-	bi_mul(r7, r8, &t8);
+	bi_kmul(r7, r8, &t8);
 	printf("x = 0x");
 	bi_show(r7, 16);
 	printf("\n");
@@ -323,7 +324,7 @@ int main()
 	printf(")\n\n");
 
 	
-	bi_mul(r8, r9, &t9);
+	bi_kmul(r8, r9, &t9);
 	printf("x = 0x");
 	bi_show(r8, 16);
 	printf("\n");
@@ -333,6 +334,7 @@ int main()
 	printf("print(x * y == 0x");
 	bi_show(t9, 16);
 	printf(")\n\n");
+
 
 
 
