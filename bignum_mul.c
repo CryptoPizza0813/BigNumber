@@ -118,13 +118,16 @@ void bi_kmul(bigint* x, bigint* y, bigint** C)
 	bi_assign(&Copy_T1, T1);
 	Left_Shift(&Copy_T1, 2 * lw);
 	bi_add(Copy_T1, T0, &R);
+	// printf("print(0x"); bi_show(T1, 16); bi_show(T0, 16); printf(" == 0x"); bi_show(R, 16); printf(")\n");
 
 	bigint* S1 = NULL;
 	bigint* S0 = NULL;
 	bi_new(&S1, 2 * l);
 	bi_new(&S0, 2 * l);
 	bi_sub(A0, A1, &S1);
+	// printf("print(0x");bi_show(A0, 16); printf(" - 0x"); bi_show(A1, 16); printf(" == 0x"); bi_show(S1, 16); printf(")\n");
 	bi_sub(B1, B0, &S0);
+	// printf("print(0x");bi_show(B1, 16); printf(" - 0x"); bi_show(B0, 16); printf(" == 0x"); bi_show(S0, 16); printf(")\n");
 
 	bigint* S = NULL;
 	bi_new(&S, 2 * l);
@@ -132,8 +135,9 @@ void bi_kmul(bigint* x, bigint* y, bigint** C)
 	if (S1->sign == NEGATIVE)
 		bi_flip_sign(&S1);
 	if (S0->sign == NEGATIVE)
-		bi_flip_sign(&S1);
+		bi_flip_sign(&S0);
 	bi_kmul(S1, S0, &S);
+	// printf("\nprint(0x"); bi_show(S1, 16); printf(" * 0x"); bi_show(S0, 16); printf(" == 0x"); bi_show(S, 16); printf(")\n");
 	S->sign = S_sign;
 
 
@@ -141,9 +145,15 @@ void bi_kmul(bigint* x, bigint* y, bigint** C)
 	bigint* Copy_SS = NULL;	
 	bi_assign(&Copy_S, S);
 	bi_add(Copy_S, T1, &S);
+	printf("%d %d\n", Copy_S->sign, T1->sign);
+	printf("print(0x");bi_show(Copy_S, 16); printf(" + 0x"); bi_show(T1, 16); printf(" == 0x"); bi_show(S, 16); printf(")\n");
 	bi_assign(&Copy_SS, S);
 	bi_add(Copy_SS, T0, &S);
+	// printf("print(0x");bi_show(Copy_SS, 16); printf(" + 0x"); bi_show(T0, 16); printf(" == 0x"); bi_show(S, 16); printf(")\n");
+	//printf("print("); bi_show(S,16); printf(" << %d == ", lw);
 	Left_Shift(&S, lw);
+	//bi_show(S, 16); printf(")\n");
+	
 
 	bigint* Copy_R = NULL;
 	bi_assign(&Copy_R, R);

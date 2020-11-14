@@ -82,6 +82,11 @@ void bi_add(bigint* x, bigint* y, bigint** C)
 	if (c == 1)
 		(*C)->a[max_len] = 1;
 	bi_refine(*C);
+
+	if(x->sign == NON_NEGATIVE && y->sign == NON_NEGATIVE)
+		(*C)->sign = NON_NEGATIVE;
+	else if(x->sign == NEGATIVE && y->sign == NEGATIVE)
+		(*C)->sign = NEGATIVE;
 }
 
 
