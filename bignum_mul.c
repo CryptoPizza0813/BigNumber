@@ -170,6 +170,7 @@ void bi_kmul(bigint* x, bigint* y, bigint** C)
 	bi_delete(&S0);
 	bi_delete(&S1);
 	bi_delete(&S);
+	bi_delete(&Copy_T1);
 	bi_delete(&Copy_S);
 	bi_delete(&Copy_SS);
 	bi_delete(&Copy_R);

@@ -344,7 +344,7 @@ int main()
 	int cnt = 1;
 	printf("\n\n# Karatsuba final test\n");
 	printf("print(\"Karatsuba final test\")");
-	while(cnt < 100) {
+	while(cnt < 4) {
 		printf("\n# TEST %d\n", cnt);
 		int random2[2] = {0, };
 		int sign2[2] = {0, };
@@ -354,9 +354,9 @@ int main()
 		
 			while(1)
 			{
-				r = rand() % 14;
+				r = rand() % 35;
 				s = rand() % 2;
-				if (r >= 9)
+				if (r >= 20)
 					break;
 			}
 			random2[i] = r;
