@@ -326,3 +326,7 @@ void bi_ksquaring(bigint* x, bigint** C)
 	bi_delete(&R);
 
 }
+
+
+
+
