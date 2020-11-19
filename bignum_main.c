@@ -308,6 +308,59 @@ int main()
 	bi_show(t7, 16);
 	printf(")\n\n");
 
+
+	int cnt = 0;
+	printf("\n\n# Squaring final test\n");
+	while (cnt < 10) {
+		printf("\n# TEST %d\n", cnt);
+		int random2[1] = { 0, };
+		int sign2[1] = { 0, };
+		for (int i = 0; i < 1; i++) {
+			int r = 10;
+			int s = 0;
+
+			while (1)
+			{
+				r = rand() % 40;
+				s = rand() % 2;
+				if (r >= 30)
+					break;
+			}
+			random2[i] = r;
+			sign2[i] = s;
+		}
+		bigint* S_TEST = NULL;
+		bigint* Sa = NULL;
+		bi_gen_rand(&Sa, sign2[0], random2[0]);
+		
+		if (Sa->sign == NON_NEGATIVE) {
+			printf("x = 0x");
+			bi_show(Sa, 16);
+			printf("\n");
+		}
+		else {
+			bi_flip_sign(&Sa);
+			printf("x = -0x");
+			bi_show(Sa, 16);
+			printf("\n");
+			bi_flip_sign(&Sa);
+		}
+		// printf("print(\"x = \", hex(x), \"\\ny = \", hex(y))\n");
+		bi_squaring(Sa, &S_TEST);
+		printf("z = 0x");
+		bi_show(S_TEST, 16);
+		printf("\n");
+		// printf("print(\"z = \", hex(z))\n");
+		printf("print(x * x == z)\n\n\n");
+
+		bi_delete(&Sa);
+		bi_delete(&S_TEST);
+
+		cnt += 1;
+	}
+
+
+
 	printf("# multi pricision test (Kartusba)\n");
 
 
@@ -339,12 +392,12 @@ int main()
 
 	/*
 		Karatsuba finial test
-		test for 15 case
+		test for n case
 	*/
-	int cnt = 1;
+	cnt = 1;
 	printf("\n\n# Karatsuba final test\n");
 	printf("print(\"Karatsuba final test\")");
-	while(cnt < 70) {
+	while(cnt < 2) {
 		printf("\n# TEST %d\n", cnt);
 		int random2[2] = {0, };
 		int sign2[2] = {0, };
