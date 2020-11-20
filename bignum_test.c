@@ -163,17 +163,24 @@ void add_test()
     int check = 10;
     int upper_limit = 15;
     int lower_limit = 5;
-    printf("enter number for check: ");
-    scanf("%d\n", &check);
-    printf("enter upper limit: ");
-    scanf("%d\n", &upper_limit);
-    printf("enter lower limit: ");
-    scanf("%d\n", &lower_limit);
-    printf("\n");
+    printf("enter number for check(press 1 for basic setting): ");
+    scanf("%d", &check);
+    if(check == 1){
+        check = 50;
+        upper_limit = 50;
+        lower_limit = 30;
+    }
+    else{
+        printf("enter upper limit: ");
+        scanf("%d", &upper_limit);
+        printf("enter lower limit: ");
+        scanf("%d", &lower_limit);
+        printf("\n");
+    }
 
-    int check_one = check + 1;
-    int random[check_one] = {0, };
-    int sign[check_one] = {0, };
+
+    int random[100] = {0, };
+    int sign[100] = {0, };
 
     // create integer for random wordlen and sign
     for(int i = 0; i < check + 1; i++){   
@@ -254,17 +261,24 @@ void sub_test()
     int check = 10;
     int upper_limit = 15;
     int lower_limit = 5;
-    printf("enter number for check: ");
-    scanf("%d\n", &check);
-    printf("enter upper limit: ");
-    scanf("%d\n", &upper_limit);
-    printf("enter lower limit: ");
-    scanf("%d\n", &lower_limit);
-    printf("\n");
+    printf("enter number for check(press 1 for basic setting): ");
+    scanf("%d", &check);
+    if(check == 1){
+        check = 50;
+        upper_limit = 50;
+        lower_limit = 30;
+    }
+    else{
+        printf("enter upper limit: ");
+        scanf("%d", &upper_limit);
+        printf("enter lower limit: ");
+        scanf("%d", &lower_limit);
+        printf("\n");
+    }
 
-    int check_one = check + 1;
-    int random[check_one] = {0, };
-    int sign[check_one] = {0, };
+
+    int random[100] = {0, };
+    int sign[100] = {0, };
 
     // create integer for random wordlen and sign
     for(int i = 0; i < check + 1; i++){   
@@ -359,9 +373,8 @@ void mul_test()
         printf("\n");
     }
 
-    int check_one = check + 1;
-    int random[check_one] = {0, };
-    int sign[check_one] = {0, };
+    int random[100] = {0, };
+    int sign[100] = {0, };
 
     // create integer for random wordlen and sign
     for(int i = 0; i < check + 1; i++){   
