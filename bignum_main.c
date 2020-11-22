@@ -9,14 +9,6 @@ int main()
 {
 	srand((unsigned)time(NULL));
 
-	// basic_test();
-
-	// add_test();
-
-	// sub_test();
-
-	// mul_test();
-
 	while(1) {			
 		int cases = 0;
 		printf("press 1 for basic test\n");
@@ -51,9 +43,5 @@ int main()
 		
 	}
 	printf("Thanks for using!\n");
-
-
-
-
 	return 0;
 }
