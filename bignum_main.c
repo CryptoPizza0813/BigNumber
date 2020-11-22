@@ -15,7 +15,8 @@ int main()
 		printf("press 2 for big number addition test\n");
 		printf("press 3 for big number subtraction test\n");
 		printf("press 4 for big number multiplication\n");
-		printf("press 5 for exit\n");
+		printf("press 5 for big number division test\n");
+		printf("press 6 for exit\n");
 		scanf("%d", &cases);
 		switch (cases)
 		{
@@ -32,13 +33,17 @@ int main()
 			mul_test();
 			break;
 		case 5:
+			div_test();
+			break;
+		case 6:
 			break;
 		default:
 			printf("you choose wrong number.\n");
 			break;
 		}
+		
 
-		if(cases == 5) 
+		if(cases == 6) 
 			break;
 		
 	}
