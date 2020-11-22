@@ -362,7 +362,7 @@ void mul_test()
     scanf("%d", &check);
     if(check == 1){
         check = 50;
-        upper_limit = 50;
+        upper_limit = 60;
         lower_limit = 30;
     }
     else{
@@ -373,8 +373,9 @@ void mul_test()
         printf("\n");
     }
 
-    int random[100] = {0, };
-    int sign[100] = {0, };
+
+    int random[1000] = {0, };
+    int sign[1000] = {0, };
 
     // create integer for random wordlen and sign
     for(int i = 0; i < check + 1; i++){   
@@ -391,7 +392,10 @@ void mul_test()
     printf("Choose your work\n1. School book multiplication \n2. Squaring \n3. Karatsuba Multiplication\n");
     scanf("%d", &choose);
 
+    clock_t start = clock();
+
         if(choose == 1){
+        
         // test for School book multiplication
         printf("# SAGE code\n");
         for(int i = 0; i < check; i++) {
@@ -554,6 +558,10 @@ void mul_test()
     }
     else
         printf("you choose wrong number\n");
+
+    clock_t end = clock();
+
+    printf("Time: %lf\n", (double)(end - start)/CLOCKS_PER_SEC);    
 
 
 

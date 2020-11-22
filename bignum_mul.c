@@ -75,12 +75,13 @@ void bi_mul(bigint* x, bigint* y, bigint** C)
 void bi_kmul(bigint* x, bigint* y, bigint** C, int flag)
 {
    // printf("test\n");
-   // int flag = 10;
+   // flag = 5;
    if (flag >= x->wordlen || flag >= y->wordlen)
    {
       bi_mul(x, y, C);
 
       return;
+      
    }
    // printf("test\n");
 
@@ -198,7 +199,7 @@ void bi_kmulc(bigint* x, bigint* y, bigint** C)
    if(flag > y->wordlen)
       flag = y->wordlen;
 
-   flag = flag / 2;
+   flag = flag / 4;
    bi_kmul(x, y, &TEMP, flag);
 
    bi_assign(C, TEMP);
