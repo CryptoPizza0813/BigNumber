@@ -1,31 +1,31 @@
 #include "bignum_div.h"
 
-word L_D_A(word A1, word A0, word B)   // 함수의 자료형으로 word 사용 가능?{
+void L_D_A(bigint* A, word B, bigint** Q, bigint** R)   // A는 두개의 워드를 가지는 Bigint, B는 1개의 워드를 가지는 Bigint
 {
-    int upper = (1 << (WORD_BITLEN - 1));    // 2^{w-1}
-    int a_j;    // A0의 j번째 비트를 저장할 변수            
-    int temp = 1;
-    word Q = 0;
-    word R = A1;
-
-    for(int j = WORD_BITLEN - 1; j >= 0; j--) {
-
-        // a_j 구하기
-        temp = 1  << j;
-        a_j = A0 & temp;   // j 번째 인덱스의 비트와 AND 수행
-
-
-        if (R >= upper) {
-            Q += (1 << j);
-            R = 2 * R + a_j - B;
-        }
-        else {
-            R = 2 * R + a_j;
-        }
-
-    }
-
-    return Q;
+   int j;
+   int w = WORD_BITLEN - 1;
+   bi_new(Q, 1);
+   bi_new(R, 1);
+   bi_set_zero(Q);
+   (*R)->a[0] = A->a[1];
+   word upper = (1 << (WORD_BITLEN - 1));
+   for (j = w; j >= 0; j--)
+   {
+      if ((*R)->a[0] >= upper)
+      {
+         (*Q)->a[0] += 1 << j;
+         (*R)->a[0] = 2 * ((*R)->a[0]) + (A->a[0] & (1 << j)) - B;
+      }
+      else
+      {
+         (*R)->a[0] = 2 * ((*R)->a[0]) + ((A->a[0] & (1 << j))>>j);
+         if ((*R)->a[0] >= B)
+         {
+            (*Q)->a[0] += 1 << j;
+            (*R)->a[0] = ((*R)->a[0]) - B;
+         }
+      }
+   }
 }
 
 void bi_divcc(bigint* A, bigint* B, bigint** Q, bigint** R) // 0 <= R < B, Q \in 0 ~ W 인 Q, R를 어떻게 반환할지 잘 생각해보기
@@ -43,7 +43,17 @@ void bi_divcc(bigint* A, bigint* B, bigint** Q, bigint** R) // 0 <= R < B, Q \in
             w_Q = WORD_MASK;
         }
         else {
-            w_Q = L_D_A(A->a[m], A->a[m], B->a[m-1]);
+            bigint* A_2word = NULL;
+            bigint* Q_local = NULL;
+            bigint* R_local = NULL;
+            bi_new(&A_2word, 2);
+            A_2word->a[1] = A->a[m];
+            A_2word->a[0] = A->a[m-1];
+            L_D_A(A_2word, B->a[m-1], &Q_local, &R_local);
+            (*Q)->a[0] = Q_local->a[0];
+            bi_delete(&A_2word);
+            bi_delete(&Q_local);
+            bi_delete(&R_local);
         }
 
         // R = A - BQ를 위한 구조체 생성
