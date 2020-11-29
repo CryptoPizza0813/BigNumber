@@ -9,66 +9,6 @@ int main()
 	
 	srand((unsigned)time(NULL));
 	
-
-	// left to right test
-	bigint* a = NULL;
-	bigint* b = NULL;
-	bigint* c = NULL;
-	bi_gen_rand(&a, 0, 2);
-	bi_assign(&b, a);
-	bi_assign(&c, a);
-	printf("x = 0x");
-	bi_show(a, 16);
-	printf("\n");
-
-	int n = 10;
-	int N = 128;
-	printf("n = %d\n", n);
-	printf("N = %d\n", N);
-
-	L_t_R(&a, n, N);
-	printf("z = 0x");
-	bi_show(a, 16);
-	printf("\n");
-	printf("print(x**n == z)\n");
-
-
-	// right to left test
-	printf("x = 0x");
-	bi_show(b, 16);
-	printf("\n");
-
-	printf("n = %d\n", n);
-	printf("N = %d\n", N);
-
-	R_t_L(&b, n, N);
-	printf("z = 0x");
-	bi_show(b, 16);
-	printf("\n");
-	printf("print(x**n == z)\n");
-
-
-	// multiply and squaring test
-	printf("x = 0x");
-	bi_show(c, 16);
-	printf("\n");
-
-	printf("n = %d\n", n);
-	printf("N = %d\n", N);
-
-	M_n_S(&c, n, N);
-	printf("z = 0x");
-	bi_show(c, 16);
-	printf("\n");
-	printf("print(x**n == z)\n");
-
-
-	bi_delete(&a);
-	bi_delete(&b);
-	bi_delete(&c);
-
-
-	/*
 	
 	while(1) {			
 		int cases = 0;
@@ -77,7 +17,8 @@ int main()
 		printf("press 3 for big number subtraction test\n");
 		printf("press 4 for big number multiplication\n");
 		printf("press 5 for big number division test\n");
-		printf("press 6 for exit\n");
+		printf("press 6 for big number modular exponentiation\n");
+		printf("press 7 for exit\n");
 		scanf("%d", &cases);
 		switch (cases)
 		{
@@ -97,19 +38,22 @@ int main()
 			div_test();
 			break;
 		case 6:
+			mod_exp_test();
 			break;
+		case 7:
+			break;	
 		default:
 			printf("you choose wrong number.\n");
 			break;
 		}
 		
 
-		if(cases == 6) 
+		if(cases == 7) 
 			break;
 		
 	}
 	
-	*/
+	
 	
 	/*
 	// 에러 검사용 주석
