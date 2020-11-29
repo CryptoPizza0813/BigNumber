@@ -599,7 +599,7 @@ void div_test()
 	}
 
 	int choose;
-	printf("Choose your work\n1. School book division \n2. School book Binary Long Division \n3. Multi-Pricision Long Division\n");
+	printf("Choose your work\n1. School book Binary Long Division \n2. Multi-Pricision Long Division\n");
 	scanf("%d", &choose);
 	bigint* A = NULL;
 	bigint* B = NULL;
@@ -609,44 +609,19 @@ void div_test()
 
 
 	if (choose == 1) {
-		// test for school book division
-		printf("# SAGE code\n");
-		for(int i = 0; i < check; i++) {
-			while(1) {
-				bi_gen_rand(&A, 0, random[i]);
-				bi_gen_rand(&B, 0, random[i + 1]);
-				if(Compare_ABS(A, B) >= 0)
-					break;
-			}
-
-			printf("x = 0x");
-			bi_show(A, 16);
-			printf("\n");
-			printf("y = 0x");
-			bi_show(B, 16);
-			printf("\n");
-
-			bi_sb_div(A, B, &Q, &R);
-
-			printf("Q = 0x");
-			bi_show(Q, 16);
-			printf("\n");
-			printf("R = 0x");
-			bi_show(R, 16);
-			printf("\n");
-
-			printf("print((x %% y == R) & (x // y) == Q)\n\n");
-		}
-
-	}
-	else if (choose == 2) {
+		int ran1;
+		int ran2;
 		// test for school book B_L_D
 		printf("# SAGE code\n");
-		for(int i = 0; i < check; i++) {
-			while(1) {
-				bi_gen_rand(&A, 0, random[i]);
-				bi_gen_rand(&B, 0, random[i + 1]);
-				if(Compare_ABS(A, B) >= 0)
+		for (int i = 0; i < check; i++) {
+			while (1) {
+				ran1 = rand() % check;
+				ran2 = (ran1 + 1) % check;
+
+				bi_gen_rand(&A, 0, random[ran1]);
+				bi_gen_rand(&B, 0, random[ran2]);
+
+				if (Compare_ABS(A, B) >= 0)
 					break;
 			}
 
@@ -671,7 +646,7 @@ void div_test()
 
 
 	}
-	else if (choose == 3) {
+	else if (choose == 2) {
 		// test for multi-pricision Division
 		int ran1;
 		int ran2;
