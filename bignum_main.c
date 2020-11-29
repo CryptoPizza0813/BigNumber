@@ -10,22 +10,62 @@ int main()
 	srand((unsigned)time(NULL));
 	
 
+	// left to right test
 	bigint* a = NULL;
-	bi_gen_rand(&a, 0, 4);
+	bigint* b = NULL;
+	bigint* c = NULL;
+	bi_gen_rand(&a, 0, 2);
+	bi_assign(&b, a);
+	bi_assign(&c, a);
 	printf("x = 0x");
 	bi_show(a, 16);
 	printf("\n");
 
 	int n = 10;
 	int N = 128;
-	printf("n = %d\n", 5);
+	printf("n = %d\n", n);
 	printf("N = %d\n", N);
 
-	L_t_R(&a, 5, 128);
+	L_t_R(&a, n, N);
 	printf("z = 0x");
 	bi_show(a, 16);
 	printf("\n");
-	printf("print(x**n %% N == z)\n");
+	printf("print(x**n == z)\n");
+
+
+	// right to left test
+	printf("x = 0x");
+	bi_show(b, 16);
+	printf("\n");
+
+	printf("n = %d\n", n);
+	printf("N = %d\n", N);
+
+	R_t_L(&b, n, N);
+	printf("z = 0x");
+	bi_show(b, 16);
+	printf("\n");
+	printf("print(x**n == z)\n");
+
+
+	// multiply and squaring test
+	printf("x = 0x");
+	bi_show(c, 16);
+	printf("\n");
+
+	printf("n = %d\n", n);
+	printf("N = %d\n", N);
+
+	M_n_S(&c, n, N);
+	printf("z = 0x");
+	bi_show(c, 16);
+	printf("\n");
+	printf("print(x**n == z)\n");
+
+
+	bi_delete(&a);
+	bi_delete(&b);
+	bi_delete(&c);
 
 
 	/*
