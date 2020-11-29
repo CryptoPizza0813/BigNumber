@@ -9,6 +9,26 @@ int main()
 	
 	srand((unsigned)time(NULL));
 	
+
+	bigint* a = NULL;
+	bi_gen_rand(&a, 0, 4);
+	printf("x = 0x");
+	bi_show(a, 16);
+	printf("\n");
+
+	int n = 10;
+	int N = 128;
+	printf("n = %d\n", 5);
+	printf("N = %d\n", N);
+
+	L_t_R(&a, 5, 128);
+	printf("z = 0x");
+	bi_show(a, 16);
+	printf("\n");
+	printf("print(x**n %% N == z)\n");
+
+
+	/*
 	
 	while(1) {			
 		int cases = 0;
@@ -49,6 +69,7 @@ int main()
 		
 	}
 	
+	*/
 	
 	/*
 	// 에러 검사용 주석
@@ -97,7 +118,9 @@ int main()
 	
 	*/
 
-	
+
+
+	/*	
 	char a[] = "3456789876543456";
 
 	bigint* Teemo = NULL;
@@ -112,6 +135,7 @@ int main()
 
 	bi_show(Teemo, 16);
 	printf("\n");
+	*/
 
 
 
