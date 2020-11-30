@@ -2,24 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
-#define WORD_BITLEN 32
-
-#if WORD_BITLEN == 8
-typedef unsigned char word;
-#define WORD_MASK 0xff; 
-#elif WORD_BITLEN == 32
-typedef unsigned int word;
-#define WORD_MASK 0xffffffff; 
-#elif WORD_BITLEN == 64
-typedef unsigned long long word;
-#define WORD_MASK 0xffffffffffffffff; 
-#endif 
-
+#include "config.h"
 
 #define NON_NEGATIVE 0
 #define NEGATIVE 1
-#define ZERORIZE 0
 
 
 typedef struct {
@@ -106,7 +92,7 @@ void DIV(bigint* A, bigint* B, bigint** Q, bigint** R);
 
 
 void ModExp_LTR(bigint** x, int n, bigint* N);
-void ModExp_RTL(bigint** x, int n, bigint* N);
+void ModExp_RTL(bigint** x, bigint* n, bigint* N);
 void ModExp_Montgomery(bigint** x, int n, bigint* N);
 
 
@@ -117,3 +103,7 @@ void sub_test();
 void mul_test();
 void div_test();
 void mod_exp_test();
+
+
+
+void add_speed();

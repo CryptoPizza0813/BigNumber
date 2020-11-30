@@ -673,7 +673,6 @@ void div_test()
 			printf("\n");
 
 			printf("print((x %% y == R) & ((x // y) == Q))\n\n");
-			//printf("55555555555555555\n");
 
 		}
 
@@ -701,7 +700,7 @@ void mod_exp_test()
 		check = 50;
 		upper_limit = 50;
 		lower_limit = 30;
-		n = 5;
+		n = 2;
 		N = 10;
 	}
 	else {
@@ -709,9 +708,9 @@ void mod_exp_test()
 		scanf("%d", &upper_limit);
 		printf("enter lower limit: ");
 		scanf("%d", &lower_limit);
-		printf("enter exponential number: ");
+		printf("enter exponential number's wordlen: ");
 		scanf("%d", &n);
-		printf("enter wordlen N: ");
+		printf("enter N's wordlen: ");
 		scanf("%d", &N);
 		printf("\n");
 	}
@@ -731,6 +730,7 @@ void mod_exp_test()
 	printf("Choose your work\n1. Left-to-Right\n2. Right-to-Left\n3. Multiply-and-Squaring\n");
 	scanf("%d", &choose);
 	bigint* A = NULL;
+	bigint* nn = NULL;
 	bigint* NN = NULL;
 
 	clock_t start = clock();
@@ -769,18 +769,21 @@ void mod_exp_test()
 		for(int i = 0; i < check; i++) {
 			bi_gen_rand(&A, 0, random[i]);
 			bi_gen_rand(&NN, 0, N);
+			bi_gen_rand(&nn, 0, n);
 
 			printf("x = 0x");
 			bi_show(A, 16);
 			printf("\n");
 
-			printf("n = %d\n", n);
+			printf("n = 0x");
+			bi_show(nn, 16);
+			printf("\n");
 
 			printf("N = 0x");
 			bi_show(NN, 16);
 			printf("\n");
 
-			ModExp_RTL(&A, n, NN);
+			ModExp_RTL(&A, nn, NN);
 
 			printf("z = 0x");
 			bi_show(A, 16);

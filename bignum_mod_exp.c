@@ -48,7 +48,7 @@ void ModExp_LTR(bigint** x, int n, bigint* N)    // x^n mod N
 	bi_delete(&R_temp);
 }
 
-void ModExp_RTL(bigint** x, int n, bigint* N)
+void ModExp_RTL(bigint** x, bigint* n, bigint* N)
 {
 	bigint* t0 = NULL;
 	bigint* t1 = NULL;
@@ -56,11 +56,14 @@ void ModExp_RTL(bigint** x, int n, bigint* N)
 	bigint* R_temp = NULL;
 	bigint* t0_temp = NULL;
 	bigint* t1_temp = NULL;
+	bigint* n_temp = NULL;
 	bi_set_one(&t0);        // t0 <- 1
 	bi_assign(&t1, *x);     // t1 <- x
+	bi_assign(&n_temp, n);
 
-	while (n != 0) {
-		int n_i = n & 0x01; // n의 lsb
+	while (is_zero(n_temp) != 0) {
+		int n_i = get_jth_bit(n_temp, 0); // n의 lsb
+		Right_Shift(&n_temp, 1); 
 
 		if (n_i == 1) {
 			bi_assign(&t0_temp, t0);
@@ -73,7 +76,6 @@ void ModExp_RTL(bigint** x, int n, bigint* N)
 		DIV(t1, N, &Q_temp, &R_temp);  // t mod N (t^2 mod N)
 		bi_assign(&t1, R_temp);
 
-		n = n >> 1;
 	}
 
 	bi_assign(x, t0);
@@ -83,6 +85,7 @@ void ModExp_RTL(bigint** x, int n, bigint* N)
 	bi_delete(&t1_temp);
 	bi_delete(&Q_temp);
 	bi_delete(&R_temp);
+	bi_delete(&n_temp);
 }
 
 void ModExp_Montgomery(bigint** x, int n, bigint* N)
