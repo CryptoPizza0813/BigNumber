@@ -19,6 +19,7 @@ int main()
 		printf("press 5 for big number division test\n");
 		printf("press 6 for big number modular exponentiation\n");
 		printf("press 7 for exit\n");
+		printf("PRESS: ");
 		scanf("%d", &cases);
 		switch (cases)
 		{
@@ -104,7 +105,7 @@ int main()
 
 
 
-	/*	
+	
 	char a[] = "3456789876543456";
 
 	bigint* Teemo = NULL;
@@ -113,13 +114,15 @@ int main()
 
 
 	
-	bi_show(Teemo, 2);
+	bi_show(Teemo, 16);
 	printf("\n");
 
 
 	bi_show(Teemo, 16);
 	printf("\n");
-	*/
+
+	bi_delete(&Teemo);
+	
 
 
 

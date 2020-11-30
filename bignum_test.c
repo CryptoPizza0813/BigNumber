@@ -713,11 +713,10 @@ void mod_exp_test()
 		scanf("%d", &upper_limit);
 		printf("enter lower limit: ");
 		scanf("%d", &lower_limit);
-		printf("\n");
 		printf("enter exponential number: ");
 		scanf("%d", &n);
 		printf("enter wordlen N: ");
-		scanf("%d", N);
+		scanf("%d", &N);
 		printf("\n");
 	}
 
