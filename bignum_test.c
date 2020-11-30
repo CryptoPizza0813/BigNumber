@@ -738,28 +738,33 @@ void mod_exp_test()
 	if(choose == 1) {
 		// Left-to-Right
 		printf("# SAGE code\n");
-		for(int i = 0; i < check; i++) {
-			bi_gen_rand(&A, 0, random[i]);
-			bi_gen_rand(&NN, 0, N);
+		for (int i = 0; i < check; i++) {
+			do
+			{
+				bi_gen_rand(&A, 0, random[i]);
+				bi_gen_rand(&NN, 0, N);
+				bi_gen_rand(&nn, 0, n);
+			} while (is_zero(A) == 0 || is_zero(NN) == 0 || is_zero(nn) == 0);
 
 			printf("x = 0x");
 			bi_show(A, 16);
 			printf("\n");
 
-			printf("n = %d\n", n);
+			printf("n = 0x");
+			bi_show(nn, 16);
+			printf("\n");
 
 			printf("N = 0x");
 			bi_show(NN, 16);
 			printf("\n");
 
-			ModExp_LTR(&A, n, NN);
+			ModExp_LTR(&A, nn, NN);
 
 			printf("z = 0x");
 			bi_show(A, 16);
 			printf("\n");
 
-			printf("print((x**n) %% N == z)\n");
-
+			printf("print(power_mod(x, n, N) == z)\n");
 		}
 
 	}
@@ -767,9 +772,12 @@ void mod_exp_test()
 		// Right-to-Left
 		printf("# SAGE code\n");
 		for(int i = 0; i < check; i++) {
-			bi_gen_rand(&A, 0, random[i]);
-			bi_gen_rand(&NN, 0, N);
-			bi_gen_rand(&nn, 0, n);
+			do
+			{
+				bi_gen_rand(&A, 0, random[i]);
+				bi_gen_rand(&NN, 0, N);
+				bi_gen_rand(&nn, 0, n);
+			} while (is_zero(A) == 0 || is_zero(NN) == 0 || is_zero(nn) == 0);
 
 			printf("x = 0x");
 			bi_show(A, 16);
@@ -789,7 +797,7 @@ void mod_exp_test()
 			bi_show(A, 16);
 			printf("\n");
 
-			printf("print((x**n) %% N == z)\n");
+			printf("print(power_mod(x, n, N) == z)\n");
 		}
 
 	}
@@ -797,26 +805,33 @@ void mod_exp_test()
 		// Multiply-and-Squaring
 		printf("# SAGE code\n");
 		for(int i = 0; i < check; i++) {
-			bi_gen_rand(&A, 0, random[i]);
-			bi_gen_rand(&NN, 0, N);
+			do
+			{
+				bi_gen_rand(&A, 0, random[i]);
+				bi_gen_rand(&NN, 0, N);
+				bi_gen_rand(&nn, 0, n);
+			} while (is_zero(A) == 0 || is_zero(NN) == 0 || is_zero(nn) == 0);
 
 			printf("x = 0x");
 			bi_show(A, 16);
 			printf("\n");
 
-			printf("n = %d\n", n);
+
+			printf("n = 0x");
+			bi_show(nn, 16);
+			printf("\n");
 
 			printf("N = 0x");
 			bi_show(NN, 16);
 			printf("\n");
 
-			ModExp_Montgomery(&A, n, NN);
+			ModExp_Montgomery(&A, nn, NN);
 
 			printf("z = 0x");
 			bi_show(A, 16);
 			printf("\n");
 
-			printf("print((x**n) %% N == z)\n");
+			printf("print(power_mod(x, n, N) == z)\n");
 		}
 
 

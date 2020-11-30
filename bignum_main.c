@@ -5,25 +5,7 @@ int main()
 	
 	srand((unsigned)time(NULL));
 	
-	/*
-	char a[] = "3456789876543456";
 	
-	bigint* Teemo = NULL;
-	bi_set_by_string(&Teemo, NON_NEGATIVE, a, 10);
-	bi_show(Teemo, 16);
-	printf("\n");
-
-	bi_show(Teemo, 10);
-	printf("\n");
-
-
-	bi_delete(&Teemo);
-
-	*/
-
-	add_speed();
-
-	/*
 	while(1) {			
 		int cases = 0;
 		printf("press 1 for basic test\n");
@@ -67,7 +49,22 @@ int main()
 			break;
 		
 	}
+	
+
+	
+	
+	/*
+	for(int i = 0; i < 10; i++){
+		printf("sc%d\n", i);
+		Binary_Long_Division_speed();
+		printf("ka%d\n", i);
+		Multiprecision_Division_speed();
+	}
 	*/
+	
+
+	
+	
 
 	printf("Thanks for using!\n");
 	

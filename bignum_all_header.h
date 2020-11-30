@@ -70,7 +70,7 @@ void bi_self_add(bigint** x, bigint* y);
 
 void bi_subc(bigint* x, bigint* y, bigint** C);
 void bi_sub(bigint* x, bigint* y, bigint** C);
-
+void bi_self_sub(bigint** x, bigint* y);
 
 void bi_mulc(word x, word y, bigint** C);
 void bi_mul(bigint* x, bigint* y, bigint** C);
@@ -81,7 +81,7 @@ void bi_square(bigint* x, bigint** C);
 void bi_squaring(bigint* x, bigint** C);
 void bi_ksquaring(bigint* x, bigint** C, int flag);
 void bi_ksquaringC(bigint* x, bigint** C);
-
+void bi_self_mul(bigint** x, bigint* y);
 
 void bi_sb_div(bigint* A, bigint* B, bigint** Q, bigint** R);
 void Binary_Long_Division(bigint* A, bigint* B, bigint** Q, bigint** R);
@@ -91,9 +91,9 @@ void bi_divc(bigint* A, bigint* B, bigint** Q, bigint** R);
 void DIV(bigint* A, bigint* B, bigint** Q, bigint** R);
 
 
-void ModExp_LTR(bigint** x, int n, bigint* N);
+void ModExp_LTR(bigint** x, bigint* n, bigint* N);
 void ModExp_RTL(bigint** x, bigint* n, bigint* N);
-void ModExp_Montgomery(bigint** x, int n, bigint* N);
+void ModExp_Montgomery(bigint** x, bigint* n, bigint* N);
 
 
 
@@ -106,4 +106,15 @@ void mod_exp_test();
 
 
 
+
+
 void add_speed();
+void sub_speed();
+void schoolbook_mul_speed();
+void karatsuba_mul_speed();
+void Schoolbook_Squaring_speed();
+void Karatsuba_Squaring_speed();
+void Binary_Long_Division_speed();
+void Multiprecision_Division_speed();
+
+
