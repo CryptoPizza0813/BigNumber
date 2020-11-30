@@ -1,6 +1,6 @@
-#include "bignum_mod_exp.h"
+#include "bignum_all_header.h"
 
-void L_t_R(bigint** x, int n, bigint* N)    // x^n mod N
+void ModExp_LTR(bigint** x, int n, bigint* N)    // x^n mod N
 {
     bigint* t = NULL;
     bi_set_one(&t); // t <- 1
@@ -48,7 +48,7 @@ void L_t_R(bigint** x, int n, bigint* N)    // x^n mod N
 	bi_delete(&R_temp);
 }
 
-void R_t_L(bigint** x, int n, bigint* N)
+void ModExp_RTL(bigint** x, int n, bigint* N)
 {
 	bigint* t0 = NULL;
 	bigint* t1 = NULL;
@@ -85,14 +85,15 @@ void R_t_L(bigint** x, int n, bigint* N)
 	bi_delete(&R_temp);
 }
 
-void M_n_S(bigint** x, int n, bigint* N)
+void ModExp_Montgomery(bigint** x, int n, bigint* N)
 {
 	bigint* t0 = NULL;
 	bigint* t1 = NULL;
 	bigint* Q_temp = NULL;
 	bigint* R_temp = NULL;
 	bigint* t1_temp = NULL;
-	bigint* t0_temp = NULL;	bi_set_one(&t0);    // t0 <- 1
+	bigint* t0_temp = NULL;	
+	bi_set_one(&t0);    // t0 <- 1
 	bi_assign(&t1, *x); // t1 <- x
 
 	int bit[2049] = { 0, };  // n의 비트열을 담을 행렬 선언

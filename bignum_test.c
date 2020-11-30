@@ -1,4 +1,4 @@
-#include "bignum_test.h"
+#include "bignum_all_header.h"
 
 void basic_test()
 {
@@ -12,18 +12,13 @@ void basic_test()
 	bi_new(&teemo1, 3);
 	printf("created\n\n");
 
-	// set bigint by array
-	printf("set by array\n");
-	bi_set_by_array(&teemo1, teemo1->sign, arr, teemo1->wordlen);
-	printf("set completed\n\n");
-
 	// show big int
 	printf("#show big int\n");
 	printf("#show by base 2: ");
 	bi_show(teemo1, 2);
 	printf("\n");
 	// printf("show by base 10: \n");
-   // bi_show(teemo, 10);
+  	// bi_show(teemo, 10);
 	printf("#show by base 16: ");
 	bi_show(teemo1, 16);
 	printf("\n\n");
@@ -611,7 +606,8 @@ void div_test()
 	if (choose == 1) {
 		int ran1;
 		int ran2;
-		// test for school book B_L_D
+
+
 		printf("# SAGE code\n");
 		for (int i = 0; i < check; i++) {
 			while (1) {
@@ -756,7 +752,7 @@ void mod_exp_test()
 			bi_show(NN, 16);
 			printf("\n");
 
-			L_t_R(&A, n, NN);
+			ModExp_LTR(&A, n, NN);
 
 			printf("z = 0x");
 			bi_show(A, 16);
@@ -784,7 +780,7 @@ void mod_exp_test()
 			bi_show(NN, 16);
 			printf("\n");
 
-			R_t_L(&A, n, NN);
+			ModExp_RTL(&A, n, NN);
 
 			printf("z = 0x");
 			bi_show(A, 16);
@@ -811,7 +807,7 @@ void mod_exp_test()
 			bi_show(NN, 16);
 			printf("\n");
 
-			M_n_S(&A, n, NN);
+			ModExp_Montgomery(&A, n, NN);
 
 			printf("z = 0x");
 			bi_show(A, 16);

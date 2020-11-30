@@ -1,9 +1,5 @@
-/**
- * Big Number Library
- * Developed by JangHyuck Choi & JaeHui In
- * 2020-11-13
- * */
-#include "bignum_test.c"
+#include "bignum_all_header.h"
+
 int main()
 {
 	

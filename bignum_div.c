@@ -1,4 +1,4 @@
-#include "bignum_div.h"
+#include "bignum_all_header.h"
 
 void bi_sb_div(bigint* A, bigint* B, bigint** Q, bigint** R)	// schoolbook division
 {
