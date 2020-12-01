@@ -1,8 +1,57 @@
-#include "bignum_all_header.h"
+#include "bignum_speed_check.h"
 
 // clock_t start = clock();
 // clock_t end = clock();
 // printf("Time : %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
+
+void speed_check()
+{
+	while(1) {
+		int select;
+		printf("Select a function to check speed\n");
+		printf("1. ADD\n2. SUB\n3. schoolbook MUL\n");
+        printf("4. karatsuba MUL\n5. schoolbook SQUARING\n6.karatsuba SQUARING\n");
+        printf("7. binary-long-division\n8. multi-precision-division\n9. EXIT\n");
+		printf("Select: ");
+		scanf("%d", select);
+		switch (select) {
+			case 1:
+				add_speed();
+				break;
+			case 2:
+				sub_speed();
+				break;	
+			case 3:
+				schoolbook_mul_speed();
+				break;
+			case 4:
+				karatsuba_mul_speed();
+				break;
+			case 5:
+				Schoolbook_Squaring_speed();
+				break;
+			case 6:
+                Karatsuba_Squaring_speed();
+				break;
+            case 7:
+                Binary_Long_Division_speed();
+                break;
+            case 8:
+                Multiprecision_Division_speed();
+                break;
+            case 9: 
+                break;
+			default:
+				printf("You choose wrong number\n");
+				break;
+	
+			if(select == 9)
+				break;
+		}
+	}
+
+}
+
 
 
 void add_speed()
