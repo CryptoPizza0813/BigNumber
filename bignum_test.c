@@ -1275,6 +1275,7 @@ void mod_exp_test()
 
 	bi_delete(&A);
 	bi_delete(&NN);
+	bi_delete(&nn);
 }
 
 
@@ -1459,6 +1460,11 @@ void calculate_div()
 	bi_show(R, base);
 	printf("\n");
 
+	bi_delete(&A);
+	bi_delete(&B);
+	bi_delete(&Q);
+	bi_delete(&R);
+
 }
 
 
@@ -1505,6 +1511,11 @@ void calculate_mod_exp()
 
 	printf("result: ");
 	bi_show(A, base);
+	printf("\n");
+
+	bi_delete(&A);
+	bi_delete(&B);
+	bi_delete(&C);
 	
 }
 
