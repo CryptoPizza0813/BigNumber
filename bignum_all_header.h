@@ -118,3 +118,32 @@ void Binary_Long_Division_speed();
 void Multiprecision_Division_speed();
 
 
+
+
+void bignumber_test();
+
+void speed_check();
+void accuracy_check();
+void calculate_bignumber();
+
+void add_speed();
+void sub_speed();
+void schoolbook_mul_speed();
+void karatsuba_mul_speed();
+void Schoolbook_Squaring_speed();
+void Karatsuba_Squaring_speed();
+void Binary_Long_Division_speed();
+void Multiprecision_Division_speed();
+
+void basic_test();
+void add_test();
+void sub_test();
+void mul_test();
+void div_test();
+void mod_exp_test();
+
+void calculate_add();
+void calculate_sub();
+void calculate_mul();
+void calculate_div();
+void calculate_mod_exp();
