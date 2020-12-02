@@ -96,30 +96,8 @@ void ModExp_RTL(bigint** x, bigint* n, bigint* N);
 void ModExp_Montgomery(bigint** x, bigint* n, bigint* N);
 
 
-
-void basic_test();
-void add_test();
-void sub_test();
-void mul_test();
-void div_test();
-void mod_exp_test();
-
-
-
-
-
-void add_speed();
-void sub_speed();
-void schoolbook_mul_speed();
-void karatsuba_mul_speed();
-void Schoolbook_Squaring_speed();
-void Karatsuba_Squaring_speed();
-void Binary_Long_Division_speed();
-void Multiprecision_Division_speed();
-
-
-
-
+/////
+// TEST FUNCTIONS
 void bignumber_test();
 
 void speed_check();

@@ -10,7 +10,8 @@ int main()
 	system("cls");
 	
 	printf("Thanks for using!\n");
-	
+	system("pause");
+	system("cls");
 
 	return 0;
 }

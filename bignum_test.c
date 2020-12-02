@@ -9,7 +9,7 @@ void bignumber_test()
 		printf("Press 1 to check speed\n");
 		printf("Press 2 to check accuracy\n");
 		printf("Press 3 to calculate\n");
-		printf("Press 4 to EXIT");
+		printf("Press 4 to EXIT\n");
 		printf("Press: ");
 		scanf("%d", &choose);
 		printf("\n\n");	
@@ -76,9 +76,9 @@ void speed_check()
 				printf("You choose wrong number\n");
 				break;
 	
-			if(select == 9)
-				break;
 		}
+		if(select == 9)
+				break;
 	}
 
 }
@@ -120,9 +120,10 @@ void accuracy_check()
 				system("pause");
 				break;
 		
-			if(select == 7)
-				break;
+			
 		}
+		if(select == 7)
+			break;
 
 	}
 
@@ -159,9 +160,9 @@ void calculate_bignumber()
 				printf("You choose wrong number\n");
 				break;
 	
-			if(select == 6)
-				break;
 		}
+		if(select == 6)
+			break;
 	}
 
 }
@@ -269,29 +270,29 @@ void schoolbook_mul_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();    // 측정 시작
-	system("cls");
-	int checks = 0;
+	// int checks[4] = {0, };
     for(int i = 0; i < check; i++) {
-		if(check / (i + 1) >= 90 && checks == 0){
+		/*
+		if(check / (i + 1) >= 90 && checks[0] == 0){
 			system("cls");
 			printf("%d%%", 10);
-			checks += 1;
+			checks[0] = 1;
 		}
-		else if(check / (i + 1) >= 70 && checks == 1){
+		else if(check / (i + 1) >= 70 && checks[1] == 0){
 			system("cls");
 			printf("%d%%", 30);
-			checks += 1;			
+			checks[1] = 1;			
 		}
-		else if(check / (i + 1) >= 50 && checks == 2){
+		else if(check / (i + 1) >= 50 && checks[2] == 0){
 			system("cls");
 			printf("%d%%", 50);
-			checks += 1;
+			checks[2] = 1;
 		}
-		else if(check / (i + 1) >= 10 && checks == 3){
+		else if(check / (i + 1) >= 10 && checks[3] == 0){
 			system("cls");
 			printf("%d%%", 90);
-			checks += 1;
-		}
+			checks[3] = 1;
+		}*/
 
         bi_mul(A, B, &C);
     }
@@ -329,9 +330,9 @@ void karatsuba_mul_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();    // 측정 시작
-	int checks = 0;
+	// int checks = 0;
     for(int i = 0; i < check; i++) {
-
+		/*
 		if(check / (i + 1) >= 90 && checks == 0){
 			system("cls");
 			printf("%d%%", 10);
@@ -352,6 +353,7 @@ void karatsuba_mul_speed()
 			printf("%d%%", 90);
 			checks += 1;
 		}
+		*/
 
         bi_kmulc(A, B, &C);
     }
@@ -383,9 +385,9 @@ void Schoolbook_Squaring_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();
-	int checks = 0;
+	//int checks = 0;
     for(int i = 0; i < check; i++){
-
+		/*
 		if(check / (i + 1) >= 90 && checks == 0){
 			system("cls");
 			printf("%d%%", 10);
@@ -406,6 +408,7 @@ void Schoolbook_Squaring_speed()
 			printf("%d%%", 90);
 			checks += 1;
 		}
+		*/
 
         bi_squaring(A, &B);
     }
@@ -437,9 +440,9 @@ void Karatsuba_Squaring_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();
-	int checks = 0;
+	//int checks = 0;
     for(int i = 0; i < check; i++){
-
+		/*
 		if(check / (i + 1) >= 90 && checks == 0){
 			system("cls");
 			printf("%d%%", 10);
@@ -460,6 +463,7 @@ void Karatsuba_Squaring_speed()
 			printf("%d%%", 90);
 			checks += 1;
 		}
+		*/
 
         bi_ksquaringC(A, &B);
     }
@@ -496,9 +500,10 @@ void Binary_Long_Division_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();    // 측정 시작
-	int checks = 0;
+	// int checks = 0;
     for(int i = 0; i < check; i++) {
-
+		
+		/*
 		if(check / (i + 1) >= 90 && checks == 0){
 			system("cls");
 			printf("%d%%", 10);
@@ -519,6 +524,7 @@ void Binary_Long_Division_speed()
 			printf("%d%%", 90);
 			checks += 1;
 		}
+		*/
 
         Binary_Long_Division(A, B, &Q, &R);
     }
@@ -559,29 +565,32 @@ void Multiprecision_Division_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();    // 측정 시작
-	int checks = 0;
+	// int checks[4] = {0, };
     for(int i = 0; i < check; i++) {
-
-		if(check / (i + 1) >= 90 && checks == 0){
+		
+		/*
+		if(check / (i + 1) >= 90 && checks[0] == 0){
 			system("cls");
 			printf("%d%%", 10);
-			checks += 1;
+			checks[0] = 1;
 		}
-		else if(check / (i + 1) >= 70 && checks == 1){
+		else if(check / (i + 1) >= 70 && checks[1] == 0){
 			system("cls");
 			printf("%d%%", 30);
-			checks += 1;			
+			checks[1] = 1;			
 		}
-		else if(check / (i + 1) >= 50 && checks == 2){
+		else if(check / (i + 1) >= 50 && checks[2] == 0){
 			system("cls");
 			printf("%d%%", 50);
-			checks += 1;
+			checks[2] = 1;
 		}
-		else if(check / (i + 1) >= 10 && checks == 3){
+		else if(check / (i + 1) >= 10 && checks[3] == 0){
 			system("cls");
 			printf("%d%%", 90);
-			checks += 1;
+			checks[3] = 1;
 		}
+		*/
+		
 
         DIV(A, B, &Q, &R);
     }
@@ -1373,7 +1382,7 @@ void mod_exp_test()
 			bi_show(A, 16);
 			printf("\n");
 
-			printf("print(power_mod(x, n, N) == z)\n");
+			printf("print(power_mod(x, n, N) == z)\n\n");
 		}
 
 	}
@@ -1406,7 +1415,7 @@ void mod_exp_test()
 			bi_show(A, 16);
 			printf("\n");
 
-			printf("print(power_mod(x, n, N) == z)\n");
+			printf("print(power_mod(x, n, N) == z)\n\n");
 		}
 
 	}
@@ -1440,7 +1449,7 @@ void mod_exp_test()
 			bi_show(A, 16);
 			printf("\n");
 
-			printf("print(power_mod(x, n, N) == z)\n");
+			printf("print(power_mod(x, n, N) == z)\n\n");
 		}
 
 
