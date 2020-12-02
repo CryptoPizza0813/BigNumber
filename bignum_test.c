@@ -3,6 +3,7 @@
 void bignumber_test()
 {
 	while(1) {
+		system("cls");
 		int choose;
 		printf("Choose your work\n");
 		printf("Press 1 to check speed\n");
@@ -36,6 +37,7 @@ void bignumber_test()
 void speed_check()
 {
 	while(1) {
+		system("cls");
 		int select;
 		printf("Select a function to check speed\n");
 		printf("1. ADD\n2. SUB\n3. schoolbook MUL\n");
@@ -84,6 +86,7 @@ void speed_check()
 void accuracy_check()
 {
 	while(1){
+		system("cls");
 		int select;
 		printf("You can check accuracy by SAGE\n");
 		printf("Select function to check accuracy\n");
@@ -114,6 +117,7 @@ void accuracy_check()
 				break;
 			default:
 				printf("You choose wrong number\n");
+				system("pause");
 				break;
 		
 			if(select == 7)
@@ -127,6 +131,7 @@ void accuracy_check()
 void calculate_bignumber()
 {
 	while(1) {
+		system("cls");
 		int select;
 		printf("Select a function to execute\n");
 		printf("1. ADD\n2. SUB\n3. MUL\n4. DIV\n5. MOD_EXP\n6. EXIT\n");
@@ -169,6 +174,7 @@ void add_speed()
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
     int second_number_wordlen;  // 두번째 bigint의 워드길이
 
+	system("cls");
     printf("Enter number for checks: ");
     scanf("%d", &check);
     printf("Enter number for first number's wordlen: ");
@@ -193,6 +199,7 @@ void add_speed()
     end = clock();      // 측정 종료
 
     printf("Add function Time: %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
+	system("pause");
 
     bi_delete(&A);
     bi_delete(&B);
@@ -201,6 +208,7 @@ void add_speed()
 
 void sub_speed()
 {
+	system("cls");
     int check;  // 테스트 데이터 쌍 개수
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
     int second_number_wordlen;  // 두번째 bigint의 워드길이
@@ -229,6 +237,7 @@ void sub_speed()
     end = clock();
 
     printf("Sub function Time: %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
+	system("pause");
 
     bi_delete(&A);
     bi_delete(&B);
@@ -239,6 +248,7 @@ void sub_speed()
 
 void schoolbook_mul_speed()
 {
+	system("cls");
     int check;  // 테스트 데이터 쌍 개수
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
     int second_number_wordlen;  // 두번째 bigint의 워드길이
@@ -259,12 +269,37 @@ void schoolbook_mul_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();    // 측정 시작
+	system("cls");
+	int checks = 0;
     for(int i = 0; i < check; i++) {
+		if(check / (i + 1) >= 90 && checks == 0){
+			system("cls");
+			printf("%d%%", 10);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 70 && checks == 1){
+			system("cls");
+			printf("%d%%", 30);
+			checks += 1;			
+		}
+		else if(check / (i + 1) >= 50 && checks == 2){
+			system("cls");
+			printf("%d%%", 50);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 10 && checks == 3){
+			system("cls");
+			printf("%d%%", 90);
+			checks += 1;
+		}
+
         bi_mul(A, B, &C);
     }
     end = clock();
 
+	system("cls");
     printf("Schoolbook multiplication Time: %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
+	system("pause");
 
     bi_delete(&A);
     bi_delete(&B);
@@ -273,6 +308,7 @@ void schoolbook_mul_speed()
 
 void karatsuba_mul_speed()
 {
+	system("cls");
     int check;  // 테스트 데이터 쌍 개수
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
     int second_number_wordlen;  // 두번째 bigint의 워드길이
@@ -293,12 +329,36 @@ void karatsuba_mul_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();    // 측정 시작
+	int checks = 0;
     for(int i = 0; i < check; i++) {
+
+		if(check / (i + 1) >= 90 && checks == 0){
+			system("cls");
+			printf("%d%%", 10);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 70 && checks == 1){
+			system("cls");
+			printf("%d%%", 30);
+			checks += 1;			
+		}
+		else if(check / (i + 1) >= 50 && checks == 2){
+			system("cls");
+			printf("%d%%", 50);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 10 && checks == 3){
+			system("cls");
+			printf("%d%%", 90);
+			checks += 1;
+		}
+
         bi_kmulc(A, B, &C);
     }
     end = clock();
 
     printf("Karatsuba multiplication Time: %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
+	system("pause");
 
     bi_delete(&A);
     bi_delete(&B);
@@ -307,6 +367,7 @@ void karatsuba_mul_speed()
 
 void Schoolbook_Squaring_speed()
 {
+	system("cls");
     int check;  // 테스트 데이터 쌍 개수
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
 
@@ -322,12 +383,36 @@ void Schoolbook_Squaring_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();
+	int checks = 0;
     for(int i = 0; i < check; i++){
+
+		if(check / (i + 1) >= 90 && checks == 0){
+			system("cls");
+			printf("%d%%", 10);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 70 && checks == 1){
+			system("cls");
+			printf("%d%%", 30);
+			checks += 1;			
+		}
+		else if(check / (i + 1) >= 50 && checks == 2){
+			system("cls");
+			printf("%d%%", 50);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 10 && checks == 3){
+			system("cls");
+			printf("%d%%", 90);
+			checks += 1;
+		}
+
         bi_squaring(A, &B);
     }
     end = clock();
 
     printf("Schoolbook Squaring Time: %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
+	system("pause");
 
     bi_delete(&A);
     bi_delete(&B);    
@@ -336,6 +421,7 @@ void Schoolbook_Squaring_speed()
 
 void Karatsuba_Squaring_speed()
 {
+	system("cls");
     int check;  // 테스트 데이터 쌍 개수
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
 
@@ -351,12 +437,36 @@ void Karatsuba_Squaring_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();
+	int checks = 0;
     for(int i = 0; i < check; i++){
+
+		if(check / (i + 1) >= 90 && checks == 0){
+			system("cls");
+			printf("%d%%", 10);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 70 && checks == 1){
+			system("cls");
+			printf("%d%%", 30);
+			checks += 1;			
+		}
+		else if(check / (i + 1) >= 50 && checks == 2){
+			system("cls");
+			printf("%d%%", 50);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 10 && checks == 3){
+			system("cls");
+			printf("%d%%", 90);
+			checks += 1;
+		}
+
         bi_ksquaringC(A, &B);
     }
     end = clock();
 
     printf("Karatsuba Squaring Time: %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
+	system("pause");
 
     bi_delete(&A);
     bi_delete(&B);
@@ -364,6 +474,7 @@ void Karatsuba_Squaring_speed()
 
 void Binary_Long_Division_speed()
 {
+	system("cls");	
     int check;  // 테스트 데이터 쌍 개수
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
     int second_number_wordlen;  // 두번째 bigint의 워드길이
@@ -385,12 +496,36 @@ void Binary_Long_Division_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();    // 측정 시작
+	int checks = 0;
     for(int i = 0; i < check; i++) {
+
+		if(check / (i + 1) >= 90 && checks == 0){
+			system("cls");
+			printf("%d%%", 10);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 70 && checks == 1){
+			system("cls");
+			printf("%d%%", 30);
+			checks += 1;			
+		}
+		else if(check / (i + 1) >= 50 && checks == 2){
+			system("cls");
+			printf("%d%%", 50);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 10 && checks == 3){
+			system("cls");
+			printf("%d%%", 90);
+			checks += 1;
+		}
+
         Binary_Long_Division(A, B, &Q, &R);
     }
     end = clock();
 
     printf("Binary Lond Division Time: %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
+	system("pause");
 
     bi_delete(&A);
     bi_delete(&B);
@@ -402,6 +537,7 @@ void Binary_Long_Division_speed()
 
 void Multiprecision_Division_speed()
 {
+	system("cls");
     int check;  // 테스트 데이터 쌍 개수
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
     int second_number_wordlen;  // 두번째 bigint의 워드길이
@@ -423,12 +559,36 @@ void Multiprecision_Division_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();    // 측정 시작
+	int checks = 0;
     for(int i = 0; i < check; i++) {
+
+		if(check / (i + 1) >= 90 && checks == 0){
+			system("cls");
+			printf("%d%%", 10);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 70 && checks == 1){
+			system("cls");
+			printf("%d%%", 30);
+			checks += 1;			
+		}
+		else if(check / (i + 1) >= 50 && checks == 2){
+			system("cls");
+			printf("%d%%", 50);
+			checks += 1;
+		}
+		else if(check / (i + 1) >= 10 && checks == 3){
+			system("cls");
+			printf("%d%%", 90);
+			checks += 1;
+		}
+
         DIV(A, B, &Q, &R);
     }
     end = clock();
 
     printf("Multi-precision Division Time: %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
+	system("pause");
 
     bi_delete(&A);
     bi_delete(&B);
@@ -442,6 +602,7 @@ void Multiprecision_Division_speed()
 
 void basic_test()
 {
+	system("cls");
 	bigint* teemo1 = NULL;
 	bigint* teemo2 = NULL;
 	bigint* teemo3 = NULL;
@@ -586,6 +747,8 @@ void basic_test()
 	printf("reduction = %d\n", reduction);
 	printf("print(x%%2**reduction == y)\n\n");
 
+	system("pause");
+
 	bi_delete(&teemo1);
 	bi_delete(&teemo2);
 	bi_delete(&teemo3);
@@ -594,6 +757,7 @@ void basic_test()
 
 void add_test()
 {
+	system("cls");
 	int check, upper_limit, lower_limit;
 	printf("enter number for check(press 1 for basic setting): ");
 	scanf("%d", &check);
@@ -685,10 +849,13 @@ void add_test()
 
 	}
 
+	system("pause");
+
 }
 
 void sub_test()
 {
+	system("cls");
 	int check, upper_limit, lower_limit;
 	printf("enter number for check(press 1 for basic setting): ");
 	scanf("%d", &check);
@@ -780,10 +947,13 @@ void sub_test()
 
 	}
 
+	system("pause");
+
 }
 
 void mul_test()
 {
+	system("cls");
 	int check, upper_limit, lower_limit;
 	printf("enter number for check(press 1 for basic setting): ");
 	scanf("%d", &check);
@@ -998,10 +1168,13 @@ void mul_test()
 	bi_delete(&a1);
 	bi_delete(&t0);
 
+	system("pause");
+
 }
 
 void div_test()
 {
+	system("cls");
 	int check, upper_limit, lower_limit;
 	printf("enter number for check(press 1 for basic setting): ");
 	scanf("%d", &check);
@@ -1123,10 +1296,13 @@ void div_test()
 	bi_delete(&Q);
 	bi_delete(&R);
 
+	system("pause");
+
 }
 
 void mod_exp_test()
 {
+	system("cls");
 	int check, upper_limit, lower_limit, n, N;
 	printf("enter number for check(press 1 for basic setting): ");
 	scanf("%d", &check);
@@ -1271,17 +1447,21 @@ void mod_exp_test()
 	}
 	else
 		printf("You choose wrong number\n");
-	
 
 	bi_delete(&A);
 	bi_delete(&NN);
 	bi_delete(&nn);
+
+	system("pause");
+
+
 }
 
 
 
 void calculate_add()
 {
+	system("cls");
 	printf("Choose string base size\n");
 	printf("1. Base 2\n2. Base 10\n3. Base 16\n");
 	int base;
@@ -1315,11 +1495,14 @@ void calculate_add()
 	bi_delete(&A);
 	bi_delete(&B);
 	bi_delete(&C);
+
+	system("pause");
 }
 
 
 void calculate_sub()
 {
+	system("cls");
 	printf("Choose string base size\n");
 	printf("1. Base 2\n2. Base 10\n3. Base 16\n");
 	int base;
@@ -1353,11 +1536,14 @@ void calculate_sub()
 	bi_delete(&A);
 	bi_delete(&B);
 	bi_delete(&C);
+
+	system("pause");
 }
 
 
 void calculate_mul()
 {
+	system("cls");
 	printf("Choose string base size\n");
 	printf("1. Base 2\n2. Base 10\n3. Base 16\n");
 	int base;
@@ -1424,6 +1610,8 @@ void calculate_mul()
 		bi_delete(&B);
 	}
 
+	system("pause");
+
 }
 
 
@@ -1465,11 +1653,14 @@ void calculate_div()
 	bi_delete(&Q);
 	bi_delete(&R);
 
+	system("pause");
+
 }
 
 
 void calculate_mod_exp()
 {
+	system("cls");
 	printf("Choose string base size\n");
 	printf("1. Base 2\n2. Base 10\n3. Base 16\n");
 	int base;
@@ -1516,6 +1707,8 @@ void calculate_mod_exp()
 	bi_delete(&A);
 	bi_delete(&B);
 	bi_delete(&C);
+
+	system("pause");
 	
 }
 

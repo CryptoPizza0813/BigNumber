@@ -6,6 +6,8 @@ int main()
 	srand((unsigned)time(NULL));
 	
 	bignumber_test();
+
+	system("cls");
 	
 	printf("Thanks for using!\n");
 	
