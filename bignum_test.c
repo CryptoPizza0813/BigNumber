@@ -176,12 +176,19 @@ void add_speed()
     int second_number_wordlen;  // 두번째 bigint의 워드길이
 
 	system("cls");
-    printf("Enter number for checks: ");
+    printf("Enter number for checks(1 for basic setting): ");
     scanf("%d", &check);
-    printf("Enter number for first number's wordlen: ");
-    scanf("%d", &first_number_wordlen);
-    printf("Enter number for second number's wordlen: ");
-    scanf("%d", &second_number_wordlen);
+	if(check == 1) {
+		check = 10000;
+		first_number_wordlen = 100;
+		second_number_wordlen = 40;
+	}
+	else {
+	    printf("Enter number for first number's wordlen: ");
+    	scanf("%d", &first_number_wordlen);
+    	printf("Enter number for second number's wordlen: ");
+    	scanf("%d", &second_number_wordlen);
+	}
 
     bigint* A = NULL;
     bigint* B = NULL;
@@ -214,12 +221,19 @@ void sub_speed()
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
     int second_number_wordlen;  // 두번째 bigint의 워드길이
 
-    printf("Enter number for checks: ");
+    printf("Enter number for checks(1 for basic setting): ");
     scanf("%d", &check);
-    printf("Enter number for first number's wordlen: ");
-    scanf("%d", &first_number_wordlen);
-    printf("Enter number for second number's wordlen: ");
-    scanf("%d", &second_number_wordlen);
+    if(check == 1) {
+		check = 10000;
+		first_number_wordlen = 100;
+		second_number_wordlen = 40;
+	}
+	else {
+	    printf("Enter number for first number's wordlen: ");
+    	scanf("%d", &first_number_wordlen);
+    	printf("Enter number for second number's wordlen: ");
+    	scanf("%d", &second_number_wordlen);
+	}
 
     bigint* A = NULL;
     bigint* B = NULL;
@@ -254,12 +268,19 @@ void schoolbook_mul_speed()
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
     int second_number_wordlen;  // 두번째 bigint의 워드길이
 
-    printf("Enter number for checks: ");
+    printf("Enter number for checks(1 for basic setting): ");
     scanf("%d", &check);
-    printf("Enter number for first number's wordlen: ");
-    scanf("%d", &first_number_wordlen);
-    printf("Enter number for second number's wordlen: ");
-    scanf("%d", &second_number_wordlen);
+    if(check == 1) {
+		check = 1000;
+		first_number_wordlen = 100;
+		second_number_wordlen = 40;
+	}
+	else {
+	    printf("Enter number for first number's wordlen: ");
+    	scanf("%d", &first_number_wordlen);
+    	printf("Enter number for second number's wordlen: ");
+    	scanf("%d", &second_number_wordlen);
+	}
 
     bigint* A = NULL;
     bigint* B = NULL;
@@ -314,12 +335,19 @@ void karatsuba_mul_speed()
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
     int second_number_wordlen;  // 두번째 bigint의 워드길이
 
-    printf("Enter number for checks: ");
+    printf("Enter number for checks(1 for basic setting): ");
     scanf("%d", &check);
-    printf("Enter number for first number's wordlen: ");
-    scanf("%d", &first_number_wordlen);
-    printf("Enter number for second number's wordlen: ");
-    scanf("%d", &second_number_wordlen);
+    if(check == 1) {
+		check = 1000;
+		first_number_wordlen = 100;
+		second_number_wordlen = 40;
+	}
+	else {
+	    printf("Enter number for first number's wordlen: ");
+    	scanf("%d", &first_number_wordlen);
+    	printf("Enter number for second number's wordlen: ");
+    	scanf("%d", &second_number_wordlen);
+	}
 
     bigint* A = NULL;
     bigint* B = NULL;
@@ -330,30 +358,9 @@ void karatsuba_mul_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();    // 측정 시작
-	// int checks = 0;
+	
     for(int i = 0; i < check; i++) {
-		/*
-		if(check / (i + 1) >= 90 && checks == 0){
-			system("cls");
-			printf("%d%%", 10);
-			checks += 1;
-		}
-		else if(check / (i + 1) >= 70 && checks == 1){
-			system("cls");
-			printf("%d%%", 30);
-			checks += 1;			
-		}
-		else if(check / (i + 1) >= 50 && checks == 2){
-			system("cls");
-			printf("%d%%", 50);
-			checks += 1;
-		}
-		else if(check / (i + 1) >= 10 && checks == 3){
-			system("cls");
-			printf("%d%%", 90);
-			checks += 1;
-		}
-		*/
+		
 
         bi_kmulc(A, B, &C);
     }
@@ -373,10 +380,16 @@ void Schoolbook_Squaring_speed()
     int check;  // 테스트 데이터 쌍 개수
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
 
-    printf("Enter number for checks: ");
+    printf("Enter number for checks(1 for basic setting): ");
     scanf("%d", &check);
-    printf("Enter number for first number's wordlen: ");
-    scanf("%d", &first_number_wordlen);
+    if(check == 1) {
+		check = 1000;
+		first_number_wordlen = 100;
+	}
+	else {
+	    printf("Enter number for first number's wordlen: ");
+    	scanf("%d", &first_number_wordlen);
+	}
 
     bigint* A = NULL;
     bigint* B = NULL;
@@ -385,31 +398,7 @@ void Schoolbook_Squaring_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();
-	//int checks = 0;
     for(int i = 0; i < check; i++){
-		/*
-		if(check / (i + 1) >= 90 && checks == 0){
-			system("cls");
-			printf("%d%%", 10);
-			checks += 1;
-		}
-		else if(check / (i + 1) >= 70 && checks == 1){
-			system("cls");
-			printf("%d%%", 30);
-			checks += 1;			
-		}
-		else if(check / (i + 1) >= 50 && checks == 2){
-			system("cls");
-			printf("%d%%", 50);
-			checks += 1;
-		}
-		else if(check / (i + 1) >= 10 && checks == 3){
-			system("cls");
-			printf("%d%%", 90);
-			checks += 1;
-		}
-		*/
-
         bi_squaring(A, &B);
     }
     end = clock();
@@ -428,10 +417,16 @@ void Karatsuba_Squaring_speed()
     int check;  // 테스트 데이터 쌍 개수
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
 
-    printf("Enter number for checks: ");
+    printf("Enter number for checks(1 for basic setting): ");
     scanf("%d", &check);
-    printf("Enter number for first number's wordlen: ");
-    scanf("%d", &first_number_wordlen);
+    if(check == 1) {
+		check = 1000;
+		first_number_wordlen = 100;
+	}
+	else {
+	    printf("Enter number for first number's wordlen: ");
+    	scanf("%d", &first_number_wordlen);
+	}
 
     bigint* A = NULL;
     bigint* B = NULL;
@@ -440,31 +435,7 @@ void Karatsuba_Squaring_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();
-	//int checks = 0;
     for(int i = 0; i < check; i++){
-		/*
-		if(check / (i + 1) >= 90 && checks == 0){
-			system("cls");
-			printf("%d%%", 10);
-			checks += 1;
-		}
-		else if(check / (i + 1) >= 70 && checks == 1){
-			system("cls");
-			printf("%d%%", 30);
-			checks += 1;			
-		}
-		else if(check / (i + 1) >= 50 && checks == 2){
-			system("cls");
-			printf("%d%%", 50);
-			checks += 1;
-		}
-		else if(check / (i + 1) >= 10 && checks == 3){
-			system("cls");
-			printf("%d%%", 90);
-			checks += 1;
-		}
-		*/
-
         bi_ksquaringC(A, &B);
     }
     end = clock();
@@ -483,12 +454,19 @@ void Binary_Long_Division_speed()
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
     int second_number_wordlen;  // 두번째 bigint의 워드길이
 
-    printf("Enter number for checks: ");
+    printf("Enter number for checks(1 for basic setting): ");
     scanf("%d", &check);
-    printf("Enter number for first number's wordlen: ");
-    scanf("%d", &first_number_wordlen);
-    printf("Enter number for second number's wordlen: ");
-    scanf("%d", &second_number_wordlen);
+    if(check == 1) {
+		check = 1000;
+		first_number_wordlen = 100;
+		second_number_wordlen = 40;
+	}
+	else {
+	    printf("Enter number for first number's wordlen: ");
+    	scanf("%d", &first_number_wordlen);
+    	printf("Enter number for second number's wordlen: ");
+    	scanf("%d", &second_number_wordlen);
+	}
 
     bigint* A = NULL;
     bigint* B = NULL;
@@ -500,32 +478,7 @@ void Binary_Long_Division_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();    // 측정 시작
-	// int checks = 0;
     for(int i = 0; i < check; i++) {
-		
-		/*
-		if(check / (i + 1) >= 90 && checks == 0){
-			system("cls");
-			printf("%d%%", 10);
-			checks += 1;
-		}
-		else if(check / (i + 1) >= 70 && checks == 1){
-			system("cls");
-			printf("%d%%", 30);
-			checks += 1;			
-		}
-		else if(check / (i + 1) >= 50 && checks == 2){
-			system("cls");
-			printf("%d%%", 50);
-			checks += 1;
-		}
-		else if(check / (i + 1) >= 10 && checks == 3){
-			system("cls");
-			printf("%d%%", 90);
-			checks += 1;
-		}
-		*/
-
         Binary_Long_Division(A, B, &Q, &R);
     }
     end = clock();
@@ -548,12 +501,19 @@ void Multiprecision_Division_speed()
     int first_number_wordlen;   // 첫번째 bigint의 워드길이
     int second_number_wordlen;  // 두번째 bigint의 워드길이
 
-    printf("Enter number for checks: ");
+    printf("Enter number for checks(1 for basic setting): ");
     scanf("%d", &check);
-    printf("Enter number for first number's wordlen: ");
-    scanf("%d", &first_number_wordlen);
-    printf("Enter number for second number's wordlen: ");
-    scanf("%d", &second_number_wordlen);
+    if(check == 1) {
+		check = 1000;
+		first_number_wordlen = 100;
+		second_number_wordlen = 40;
+	}
+	else {
+	    printf("Enter number for first number's wordlen: ");
+    	scanf("%d", &first_number_wordlen);
+    	printf("Enter number for second number's wordlen: ");
+    	scanf("%d", &second_number_wordlen);
+	}
 
     bigint* A = NULL;
     bigint* B = NULL;
@@ -565,33 +525,7 @@ void Multiprecision_Division_speed()
     clock_t start, end; // 시간 측정용 변수
 
     start = clock();    // 측정 시작
-	// int checks[4] = {0, };
     for(int i = 0; i < check; i++) {
-		
-		/*
-		if(check / (i + 1) >= 90 && checks[0] == 0){
-			system("cls");
-			printf("%d%%", 10);
-			checks[0] = 1;
-		}
-		else if(check / (i + 1) >= 70 && checks[1] == 0){
-			system("cls");
-			printf("%d%%", 30);
-			checks[1] = 1;			
-		}
-		else if(check / (i + 1) >= 50 && checks[2] == 0){
-			system("cls");
-			printf("%d%%", 50);
-			checks[2] = 1;
-		}
-		else if(check / (i + 1) >= 10 && checks[3] == 0){
-			system("cls");
-			printf("%d%%", 90);
-			checks[3] = 1;
-		}
-		*/
-		
-
         DIV(A, B, &Q, &R);
     }
     end = clock();
