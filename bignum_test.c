@@ -767,7 +767,6 @@ void add_test()
 			printf("y = -0x");
 			bi_show(a1, 16);
 			printf("\n");
-			bi_flip_sign(&a1);
 		}
 
 		bi_add(a0, a1, &t0);
