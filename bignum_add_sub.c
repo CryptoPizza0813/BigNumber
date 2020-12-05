@@ -1,6 +1,6 @@
 #include "bignum_all_header.h"
 
-// 덧셈 수행
+
 void bi_add(bigint* x, bigint* y, bigint** C)
 {
 	if(x->sign != NEGATIVE && y->sign == NEGATIVE) {
@@ -85,6 +85,7 @@ void bi_add(bigint* x, bigint* y, bigint** C)
 		(*C)->sign = NEGATIVE;
 }
 
+
 void bi_self_add(bigint** x, bigint* y)
 {
 	bigint* Copy_x = NULL;
@@ -93,7 +94,7 @@ void bi_self_add(bigint** x, bigint* y)
 	bi_delete(&Copy_x);
 }
 
-// bigint 뺄셈
+
 void bi_subc(bigint* x, bigint* y, bigint** C)  // x >= y > 0 에서 x - y
 {
 	word b = 0;
@@ -120,6 +121,7 @@ void bi_subc(bigint* x, bigint* y, bigint** C)  // x >= y > 0 에서 x - y
 			b = 0;
 	}
 }
+
 
 void bi_sub(bigint* x, bigint* y, bigint** C)
 {
@@ -211,6 +213,7 @@ void bi_sub(bigint* x, bigint* y, bigint** C)
 	bi_delete(&Copy_y);
 
 }
+
 
 void bi_self_sub(bigint** x, bigint* y)
 {

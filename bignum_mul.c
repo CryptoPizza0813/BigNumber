@@ -38,6 +38,7 @@ void bi_mulc(word x, word y, bigint** C)
     }
 }
 
+
 void bi_mul(bigint* x, bigint* y, bigint** C)
 {
 	bigint* C_word = NULL;  // singhle pricision을 저장하는 bigint 구조체
@@ -45,9 +46,10 @@ void bi_mul(bigint* x, bigint* y, bigint** C)
 	bigint* add_C = NULL;
 
 	int max_len = x->wordlen + y->wordlen;  //C의 최대 길이
-	
+
 	bi_new(&Copy_C, max_len);   // 곱셈 결과를 저장할 C를 max_len 길이로 초기화
 	bi_new(&add_C, max_len);
+	bi_set_zero(&Copy_C);
 	for (int i = 0; i < x->wordlen; i++)
 	{
 		for (int j = 0; j < y->wordlen; j++)
@@ -64,12 +66,22 @@ void bi_mul(bigint* x, bigint* y, bigint** C)
 	else
 		Copy_C->sign = NEGATIVE;
 	bi_refine(Copy_C);
-	bi_assign(C, Copy_C);
 
+	bi_assign(C, Copy_C);
 	bi_delete(&add_C);
 	bi_delete(&C_word);
 	bi_delete(&Copy_C);
 }
+
+
+void bi_self_mul(bigint** x, bigint* y)
+{
+	bigint* Copy_x = NULL;
+	bi_assign(&Copy_x, *x);
+	bi_mul(Copy_x, y, x);
+	bi_delete(&Copy_x);
+}
+
 
 void bi_kmul(bigint* x, bigint* y, bigint** C, int flag)
 {
@@ -179,6 +191,7 @@ void bi_kmul(bigint* x, bigint* y, bigint** C, int flag)
 	bi_delete(&Copy_R);
 }
 
+
 void bi_kmulc(bigint* x, bigint* y, bigint** C)
 {
 	int sign = 0;
@@ -199,21 +212,28 @@ void bi_kmulc(bigint* x, bigint* y, bigint** C)
 
 	flag = flag / 2;
 	if (flag == 0)
-		bi_mul(x, y, C);
+	{
+		bi_mul(x, y, &TEMP);
+	}
 	else
 		bi_kmul(x, y, &TEMP, flag);
 
 	bi_assign(C, TEMP);
-	if(sign == NEGATIVE)
-		if((*C)->sign == NON_NEGATIVE)
-			bi_flip_sign(C);
-	else
-		if((*C)->sign == NEGATIVE)
-			bi_flip_sign(C);
-	
 
+	if(sign == NEGATIVE)
+	{
+		if ((*C)->sign == NON_NEGATIVE)
+			bi_flip_sign(C);
+	}
+	else
+	{
+		if ((*C)->sign == NEGATIVE)
+			bi_flip_sign(C);
+	}
+	
 	bi_delete(&TEMP);
 }
+
 
 void bi_squaringC(word x, bigint** C)
 {
@@ -342,18 +362,10 @@ void bi_ksquaringC(bigint* x, bigint** C)
 
 	int flag = (x->wordlen) / 2;
 	if(flag == 0)
-		bi_squaring(x, C);
+		bi_squaring(x, &TEMP);
 	else
 		bi_ksquaring(x, &TEMP, flag);
 
 	bi_assign(C, TEMP);
 	bi_delete(&TEMP);
-}
-
-void bi_self_mul(bigint** x, bigint* y)
-{
-	bigint* Copy_x = NULL;
-	bi_assign(&Copy_x, *x);
-	bi_mul(Copy_x, y, x);
-	bi_delete(&Copy_x);
 }
