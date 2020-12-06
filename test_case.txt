@@ -1,0 +1,138 @@
+/* crypteemo test case */
+// 줄 띄움은 엔터키를 의미.
+1	// check speed
+1	// add speed check
+1	// basic setting check (10000 test cases, 100 word len, 40 word len)
+2	// sub speed check
+1	// basic setting check (10000 test cases, 100 word len, 40 word len)
+3	// schoolbook mul speed check
+1	// basic setting check (1000 test cases, 100 word len, 40 word len)
+4	// karatsuba mul speed check
+1	// basic setting check (1000 test cases, 100 word len, 40 word len)
+5	// schoolbook squaring speed check 
+1	// basic setting check (1000 test cases, 100 word len, 40 word len)
+6	// karatsuba squaring speed check
+1	// basic setting check (1000 test cases, 100 word len, 40 word len)
+7	// binary long division speed check
+1	// basic setting check (1000 test cases, 100 word len, 40 word len)
+8	// multi-precision division speed check
+1	// basic setting check (1000 test cases, 100 word len, 40 word len)
+9	// exit to main
+2	// check accuracy
+1	// basic function check
+2	// add accuracy test
+1	// basic setting ( 50 check, upper limit = 50, lower limit = 30)
+3	// sub accuracy test
+1	// basic setting ( 50 check, upper limit = 50, lower limit = 30)
+4	// mul accuracy test
+1	// basic setting ( 50 check, upper limit = 50, lower limit = 30)
+1	// schoolbook mul
+4	// mul accuracy test
+1	// basic setting ( 50 check, upper limit = 50, lower limit = 30)
+2	// schoolbook squaring
+4	// mul accuracy test
+1	// basic setting ( 50 check, upper limit = 50, lower limit = 30)
+3	// karatsuba mul
+4	// mul accuracy test
+1	// basic setting ( 50 check, upper limit = 50, lower limit = 30)
+4	// karatsuba squaring
+5	// division accuracy test
+1	// basic setting ( 50 check, upper limit = 50, lower limit = 30)
+1	// schoolbook binary long division
+5	// division accuracy test
+1	// basic setting ( 50 check, upper limit = 50, lower limit = 30)
+2	// multi-precision long division
+6	// Modular exponentiation accuracy test
+1	// basic setting ( 50 check, upper limit = 50, lower limit = 30, 지수 워드길이: 2, 모듈러 숫자 워드길이: 10)
+1	// Left to Right
+6	// Modular exponentiation accuracy test
+1	// basic setting ( 50 check, upper limit = 50, lower limit = 30, 지수 워드길이: 2, 모듈러 숫자 워드길이: 10)
+2	// Right to Left
+6	// Modular exponentiation accuracy test
+1	// basic setting ( 50 check, upper limit = 50, lower limit = 30, 지수 워드길이: 2, 모듈러 숫자 워드길이: 10)
+3	// Multiply-and-Squaring
+7	// exit to main menu
+3	// calculate 
+1	// calculate add
+16	// set base 16
+0	// set sign of A
+1234567890abcdef	// big number A
+0	// set sign of B
+1234567890abcdef	// big number B
+1	// calculate add
+16	// set base 16
+1	// set sign of A
+1234567890abcdef	// big number A
+0	// set sign of B
+1234567890abcdef	// big number B
+2	// calculate sub
+16	// set base 16
+0	// set sign of A
+1111111111111111	// big number A
+0	// set sign of B
+1111111	// big number B
+3	// calcuate mul
+16	// set base 16
+1	// karatsuba multiplication
+0	// set sign of A
+1234567890abcdef	// big number A
+0	// set sign of B
+1234567	// big number B
+3	// calcuate mul
+16	// set base 16
+2	// karatsuba squaring
+0	// set sign of A
+1234567890abcdef	// big number A
+4	// calculate division
+16	// set base 16
+1234567890abcdef	// big number A
+1234567890	// big number B
+5	// modular exp
+16	// set base 16
+1	// Left to Right
+123456789aaabbbccc	// big number A	
+123456	// big number B (지수)
+fffffff	// big number C (모듈러 할 숫자)
+5	// modular exp
+16	// set base 16
+2	// Right to Left
+123456789aaabbbccc	// big number A	
+123456	// big number B (지수)
+fffffff	// big number C (모듈러 할 숫자)
+5	// modular exp
+16	// set base 16
+3	// Montgomery
+123456789aaabbbccc	// big number A	
+123456	// big number B (지수)
+fffffff	// big number C (모듈러 할 숫자)
+6	// exit to main menu
+4	// exit program
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

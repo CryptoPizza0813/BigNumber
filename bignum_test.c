@@ -1746,12 +1746,12 @@ void calculate_mod_exp()
 	bi_set_by_string(&A, A_sign, str1, num);
 	
 	B_sign = NON_NEGATIVE;
-	printf("Enter second big number by string: ");
+	printf("Enter exponential big number by string: ");
 	scanf("%s", str2);
 	bi_set_by_string(&B, B_sign, str2, num);
 
 	C_sign = NON_NEGATIVE;
-	printf("Enter second big number by string: ");
+	printf("Enter modular big number by string: ");
 	scanf("%s", str3);
 	bi_set_by_string(&C, C_sign, str3, num);
 
